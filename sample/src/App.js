@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Register from './Components/register/register';
+import Login from './Components/login/login'; 
 function App() {
   return (
     <div className="App">
-      <Register /> {/* Display the Register component here */}
+      <Login /> {/* Display the Login component */}
     </div>
   );
 }
