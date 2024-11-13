@@ -1,0 +1,39 @@
+// Register.js
+import React from 'react';
+import './register.css'; // Import the CSS file
+import image1 from './image.png'
+const Register = () => {
+  return (
+    <div className="Registration">
+      <div className="container">
+        <h1>Fundo</h1>
+        <h2>Create your Fundo Account</h2>
+        <form>
+          <div className="input-group-1">
+            <input type="text" placeholder="First Name*" />
+            <input type="text" placeholder="Last Name*" />
+          </div>
+          <br />
+          <div className="Username">
+            <input type="text" placeholder="Username*" />
+          </div>
+          <p>You can use letters, numbers and periods</p>
+          <div className="Password">
+            <input type="password" placeholder="Password*" />
+            <input type="password" placeholder="Confirm *" />
+          </div>
+        </form>
+        <p>Use 8 or more characters with letters, numbers and symbols</p>
+        <div className="link">
+          <a href="/login">Sign in instead</a>
+          <button type="submit">Register</button>
+        </div>
+      </div>
+      <div className="image">
+        <img src={image1} alt="Signup visual" width="100%" />
+      </div>
+    </div>
+  );
+};
+
+export default Register;

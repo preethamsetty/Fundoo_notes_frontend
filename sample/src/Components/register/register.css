@@ -1,0 +1,57 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container{
+    width: 60%;
+  }
+
+  .Password{
+    display: flex;
+    gap: 50px;
+  }
+  .Username{
+   width: 94%;
+   box-sizing: border-box;
+  }
+  
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .link{
+    display: flex;
+    justify-content: space-between;
+  }
+  .input-group-1 {
+    display: flex;
+    gap: 50px; 
+  }
+  .Registration{
+    display: flex;
+    padding: 20px;
+    width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  p {
+    font-size: 12px;
+    text-align: left;
+  }
+  h1,h2{
+    text-align: left;
+  }
