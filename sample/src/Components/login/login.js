@@ -4,12 +4,12 @@ import './login.css'; // Import the CSS file
 
 const Login = () => {
   return (
-    <div className="container">
+    <div className="LoginContainer">
       <h1>Fundo</h1>
       <h2>Sign in</h2>
       <p>Use your Fundoo Account</p>
       <form>
-        <div className="Input">
+        <div className="LoginInput">
           <input type="text" placeholder="Email Or Phone*" />
           <br />
           <br />
