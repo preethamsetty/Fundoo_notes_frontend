@@ -4,32 +4,32 @@ import './register.css'; // Import the CSS file
 import image1 from './image.png'
 const Register = () => {
   return (
-    <div className="Registration">
-      <div className="container">
+    <div className="RegisterPage">
+      <div className="RegisterContainer">
         <h1>Fundo</h1>
         <h2>Create your Fundo Account</h2>
         <form>
-          <div className="input-group-1">
+          <div className="RegisterInput-group-1">
             <input type="text" placeholder="First Name*" />
             <input type="text" placeholder="Last Name*" />
           </div>
           <br />
-          <div className="Username">
+          <div className="RegisterUsername">
             <input type="text" placeholder="Username*" />
           </div>
           <p>You can use letters, numbers and periods</p>
-          <div className="Password">
+          <div className="RegisterPassword">
             <input type="password" placeholder="Password*" />
             <input type="password" placeholder="Confirm *" />
           </div>
         </form>
         <p>Use 8 or more characters with letters, numbers and symbols</p>
-        <div className="link">
+        <div className="RegisterLink">
           <a href="/login">Sign in instead</a>
           <button type="submit">Register</button>
         </div>
       </div>
-      <div className="image">
+      <div className="RegisterImage">
         <img src={image1} alt="Signup visual" width="100%" />
       </div>
     </div>

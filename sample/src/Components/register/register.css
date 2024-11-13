@@ -4,15 +4,15 @@ body{
     align-items: center;
     min-height: 100vh;
   }
-  .container{
+  .RegisterContainer{
     width: 60%;
   }
 
-  .Password{
+  .RegisterPassword{
     display: flex;
     gap: 50px;
   }
-  .Username{
+  .RegisterUsername{
    width: 94%;
    box-sizing: border-box;
   }
@@ -30,15 +30,15 @@ body{
     border-radius: 5px;
     cursor: pointer;
   }
-  .link{
+  .RegisterLink{
     display: flex;
     justify-content: space-between;
   }
-  .input-group-1 {
+  .RegisterInput-group-1 {
     display: flex;
     gap: 50px; 
   }
-  .Registration{
+  .RegisterPage{
     display: flex;
     padding: 20px;
     width: 800px;
