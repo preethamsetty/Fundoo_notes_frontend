@@ -1,51 +1,68 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .LoginContainer {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-  }
+  width: 300px;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
 
-  h1,h2,p {
-    text-align: center;
-  }
-  
-  input[type="text"], input[type="password"] {
-    width: 90%;
-    padding: 10px;
-  }
-  
-  .LoginInput{
-    width: 92%;
-  }
-  button {
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  a {
-    color: blue;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
+.LoginFundo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .LoginLink{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
+h1, h2, p {
+  text-align: center;
+  margin-bottom: 15px;
+}
 
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.LoginInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.LoginLink {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.Login-Forget{
+  text-align: left;
+}
+
+.LoginLink  {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 10px;
+}

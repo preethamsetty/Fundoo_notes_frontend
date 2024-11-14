@@ -24,17 +24,19 @@ const Register = () => {
           <TextField label="Password*" id="outlined-size-normal" />
           <TextField label="Confirm*" id="outlined-size-normal" />
           </div>
+          <p>Use 8 or more characters with letters, numbers and symbols</p>
         </form>
-        <p>Use 8 or more characters with letters, numbers and symbols</p>
+        
         <div className="RegisterLink">
         <Link href="/Login" target="_blank" rel="noopener">Sign in Instead</Link>
           <Button variant="contained">Register</Button>
         </div>
       </div>
       <div className="RegisterImage">
-        <img src={image1} alt="Signup visual" width="100%" />
-        <p1>One account. All of </p1>
         <br/>
+        <img src={image1} alt="Signup visual" width="100%" />
+        <br/>
+        <p1>One account. All of </p1>
         <p1>Fundo working for you. </p1>
       </div>
     </div>

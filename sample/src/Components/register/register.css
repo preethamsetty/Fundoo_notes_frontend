@@ -22,6 +22,8 @@ body {
 }
 
 .RegisterImage {
+  display: flex;
+  flex-direction: column;
   width: 50%; 
 }
 
@@ -29,6 +31,7 @@ body {
 .RegisterPassword {
   display: flex;
   gap: 20px; 
+  font-size: 12px;
 }
 
 .RegisterEmail {
@@ -39,6 +42,10 @@ body {
 input[type="text"], input[type="password"] {
   width: 100%;
   padding: 10px;
+}
+
+form{
+  font-size: 12px;
 }
 
 button {
