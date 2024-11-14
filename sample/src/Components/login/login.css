@@ -23,6 +23,9 @@ body{
     border: 1px solid #ccc;
   }
   
+  .LoginInput{
+    width: 92%;
+  }
   button {
     background-color: blue;
     color: white;

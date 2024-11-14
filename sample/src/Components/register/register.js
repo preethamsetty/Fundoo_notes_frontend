@@ -1,7 +1,6 @@
-// Register.js
 import React from 'react';
-import './register.css'; // Import the CSS file
-import image1 from './image.png'
+import './register.css'; 
+import image1 from '../../assets/image.png'
 const Register = () => {
   return (
     <div className="RegisterPage">

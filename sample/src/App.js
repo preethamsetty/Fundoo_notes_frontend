@@ -1,12 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './Components/login/login'; 
-import Register from './Components/register/register';
+import RoutingModule from '../src/RoutingModule.js';
 function App() {
   return (
     <div className="App">
-      <Register/>
-      {/* <Login />  */}
+      <RoutingModule />
     </div>
   );
 }
