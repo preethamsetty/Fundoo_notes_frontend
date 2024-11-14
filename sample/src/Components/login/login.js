@@ -12,7 +12,7 @@ const Login = () => {
       <h2>Sign in</h2>
       <p>Use your Fundoo Account</p>
       </div>
-      <form>
+      <form className='LoginForm'>
         <div className="LoginInput">
         <TextField label="Email*" id="outlined-size-normal" />
           <br/>

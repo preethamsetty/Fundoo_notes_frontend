@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 50%; 
+  font-size: 17px;
 }
 
 .RegisterInput-group-1,
@@ -44,7 +45,7 @@ input[type="text"], input[type="password"] {
   padding: 10px;
 }
 
-form{
+.RegisterForm{
   font-size: 12px;
 }
 
@@ -62,19 +63,11 @@ button {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-}
-
-p {
-  font-size: 12px;
-  text-align: left;
+  font-size: 16px;
 }
 
 .RegisterContainer p,
 .RegisterContainer h1,
 .RegisterContainer h2 {
   text-align: left;
-}
-
-p1{
-  font-size: 20px;
 }
