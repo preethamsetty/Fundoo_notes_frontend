@@ -1,5 +1,6 @@
 import React from 'react';
 import './login.css'; 
+import TextField from '@mui/material/TextField';
 
 const Login = () => {
   return (
@@ -9,7 +10,7 @@ const Login = () => {
       <p>Use your Fundoo Account</p>
       <form>
         <div className="LoginInput">
-          <input type="text" placeholder="Email Or Phone*" />
+        <input type="text" placeholder="Email Or Phone*" />
           <br />
           <br />
           <input type="password" placeholder="Password*" />
@@ -17,7 +18,7 @@ const Login = () => {
           <br />
         </div>
         <a href="#">Forgot password?</a>
-        <div className="link">
+        <div className="LoginLink">
           <a href="#">Create account</a>
           <button type="submit">Login</button>
         </div>
