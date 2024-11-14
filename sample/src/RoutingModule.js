@@ -15,7 +15,6 @@ function RoutingModule() {
     }
   ]);
 
-  // Provide the router
   return <RouterProvider router={routes} />;
 }
 

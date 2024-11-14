@@ -5,21 +5,32 @@ body{
     min-height: 100vh;
   }
   .RegisterContainer{
+    display: flex;
+    flex-direction: column;
     width: 60%;
+    text-align: left;
+    align-items: flex-start;
   }
 
   .RegisterPassword{
     display: flex;
     gap: 50px;
   }
+  
   .RegisterUsername{
-   width: 94%;
+   width: 105%;
    box-sizing: border-box;
   }
   
   input[type="text"], input[type="password"] {
     width: 100%;
     padding: 10px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   button {
@@ -30,9 +41,11 @@ body{
     border-radius: 5px;
     cursor: pointer;
   }
-  .RegisterLink{
+  .RegisterLink {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
   .RegisterInput-group-1 {
     display: flex;
@@ -45,13 +58,14 @@ body{
     border: 1px solid #ccc;
     border-radius: 5px;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
   
   p {
     font-size: 12px;
     text-align: left;
   }
+
   h1,h2{
     text-align: left;
   }
