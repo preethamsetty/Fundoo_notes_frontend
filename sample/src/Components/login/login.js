@@ -4,9 +4,13 @@ import './login.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
+import { loginApiCall } from '../../utils/Api';
 
 const Login = () => {
   const navigate = useNavigate()
+  const handleLogin = ()=>{
+    loginApiCall()
+  }
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -96,7 +100,7 @@ const Login = () => {
         
         <div className="LoginLink">
           <Link onClick={()=>navigate(`/register`)} target="_blank" rel="noopener">Create Account</Link>
-          <Button variant="contained" type="submit">Login</Button>
+          <Button onClick={handleLogin} variant="contained" type="submit">Login</Button>
         </div>
       </form>
     </div>
