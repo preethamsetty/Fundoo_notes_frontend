@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './register.css'; 
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import image1 from '../../assets/image.png';
 
 const Register = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -129,7 +131,7 @@ const Register = () => {
           </div>
           <p>Use 8 or more characters with letters, numbers, and symbols</p>
           <div className="RegisterLink">
-            <Link href="/login" target="_blank" rel="noopener">
+            <Link onClick={()=>navigate(`/`)} target="_blank" rel="noopener">
               Sign in instead
             </Link>
             <Button variant="contained" type="submit">

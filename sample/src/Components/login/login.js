@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css'; 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
 const Login = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -93,7 +95,7 @@ const Login = () => {
         </div>
         
         <div className="LoginLink">
-          <Link href="/register" target="_blank" rel="noopener">Create Account</Link>
+          <Link onClick={()=>navigate(`/register`)} target="_blank" rel="noopener">Create Account</Link>
           <Button variant="contained" type="submit">Login</Button>
         </div>
       </form>

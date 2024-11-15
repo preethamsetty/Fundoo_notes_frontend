@@ -6,12 +6,12 @@ function RoutingModule() {
   // Define the routes
   const routes = createBrowserRouter([
     {
-      path: "/register",
-      element: <Register />
+      path: "",
+      element: <Login />
     },
     {
-      path: "/login",
-      element: <Login />
+      path: "register",
+      element: <Register />
     }
   ]);
 
