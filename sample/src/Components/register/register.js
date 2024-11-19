@@ -5,9 +5,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import image1 from '../../assets/image.png';
+import { registerUser } from '../../utils/Api'; // Import the register API function
 
 const Register = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -59,10 +60,26 @@ const Register = () => {
     return Object.keys(newErrors).length === 0; // Returns true if no errors
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
-      alert('Form submitted successfully!');
+      try {
+        // Call the register API
+        const response = await registerUser({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+        });
+
+        // Handle successful registration
+        alert(response.message || 'Registration successful!');
+        navigate('/'); // Redirect to the login page or dashboard
+      } catch (error) {
+        // Handle errors from the API
+        alert(error || 'Registration failed. Please try again.');
+      }
     }
   };
 
@@ -71,7 +88,7 @@ const Register = () => {
       <div className="RegisterContainer">
         <h1>Fundo</h1>
         <h2>Create your Fundo Account</h2>
-        <form className='RegisterForm' onSubmit={handleSubmit}>
+        <form className="RegisterForm" onSubmit={handleSubmit}>
           <div className="RegisterInput-group-1">
             <TextField
               id="outlined-basic"
@@ -131,7 +148,7 @@ const Register = () => {
           </div>
           <p>Use 8 or more characters with letters, numbers, and symbols</p>
           <div className="RegisterLink">
-            <Link onClick={()=>navigate(`/`)} target="_blank" rel="noopener">
+            <Link onClick={() => navigate(`/`)} target="_blank" rel="noopener">
               Sign in instead
             </Link>
             <Button variant="contained" type="submit">
@@ -141,10 +158,10 @@ const Register = () => {
         </form>
       </div>
       <div className="RegisterImage">
-        <br/>
+        <br />
         <img src={image1} alt="Signup visual" width="100%" />
-        <br/>
-        <p1>One account. All of Fundo working for you.</p1>
+        <br />
+        <p>One account. All of Fundo working for you.</p>
       </div>
     </div>
   );
