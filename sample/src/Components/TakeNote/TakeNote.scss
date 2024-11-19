@@ -1,0 +1,42 @@
+.NoteContainer {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .note-placeholder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .note-placeholder span {
+    color: #999;
+  }
+  
+  .note-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .note-editing {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .note-editing .MuiTextField-root {
+    margin-bottom: 10px;
+  }
+  
+  .note-save {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
