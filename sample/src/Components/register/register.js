@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import image1 from '../../assets/image.png';
-import { registerUser } from '../../utils/Api'; // Import the register API function
+import { registerUser } from '../../utils/Api';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ const Register = () => {
     confirmPassword: ''
   });
 
-  // Email and Password Regex Patterns
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
@@ -33,8 +32,6 @@ const Register = () => {
       ...formData,
       [name]: value
     });
-
-    // Reset errors for the changed field
     setErrors({
       ...errors,
       [name]: ''
@@ -57,7 +54,7 @@ const Register = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
@@ -65,19 +62,15 @@ const Register = () => {
 
     if (validateForm()) {
       try {
-        // Call the register API
         const response = await registerUser({
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
           password: formData.password,
         });
-
-        // Handle successful registration
         alert(response.message || 'Registration successful!');
-        navigate('/'); // Redirect to the login page or dashboard
+        navigate('/');
       } catch (error) {
-        // Handle errors from the API
         alert(error || 'Registration failed. Please try again.');
       }
     }
@@ -91,13 +84,16 @@ const Register = () => {
         <form className="RegisterForm" onSubmit={handleSubmit}>
           <div className="RegisterInput-group-1">
             <TextField
-              id="outlined-basic"
+              id="outlined-size-small"
               label="First Name"
               variant="outlined"
               name="firstName"
               value={formData.firstName}
-              onChange={handleChange}
+              onChange={handleChange}   
               required
+              size="small"
+              margin="dense"
+              className="register-input"
             />
             <TextField
               label="Last Name"
@@ -106,9 +102,11 @@ const Register = () => {
               value={formData.lastName}
               onChange={handleChange}
               required
+              size="small"
+              margin="dense"
+              className="register-input"
             />
           </div>
-          <br />
           <div className="RegisterEmail">
             <TextField
               label="Email"
@@ -119,20 +117,27 @@ const Register = () => {
               error={!!errors.email}
               helperText={errors.email}
               required
+              size="small"
+              margin="dense"
+              fullWidth
+              className="register-input"
             />
           </div>
-          <p>You can use letters, numbers and periods</p>
+          <p>You can use letters, numbers, and periods</p>
           <div className="RegisterPassword">
             <TextField
               label="Password"
-              id="outlined-size-normal"
+              id="outlined-size-small"
               name="password"
               type="password"
               value={formData.password}
               onChange={handleChange}
               error={!!errors.password}
               helperText={errors.password}
-              required
+              required   
+              size="small"
+              margin="dense"
+              className="register-input"
             />
             <TextField
               label="Confirm"
@@ -142,8 +147,11 @@ const Register = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
               error={!!errors.confirmPassword}
-              helperText={errors.confirmPassword}
-              required
+              helperText={errors.confirmPassword}   
+              required   
+              size="small"
+              margin="dense"
+              className="register-input"
             />
           </div>
           <p>Use 8 or more characters with letters, numbers, and symbols</p>
@@ -158,9 +166,8 @@ const Register = () => {
         </form>
       </div>
       <div className="RegisterImage">
-        <br />
-        <img src={image1} alt="Signup visual" width="100%" />
-        <br />
+        <img src={image1} alt="Signup visual" width="70%" />
+        <br/>
         <p>One account. All of Fundo working for you.</p>
       </div>
     </div>

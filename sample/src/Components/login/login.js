@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css'; 
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import { loginUser } from '../../utils/Api'; // Import the login API function
-import image1 from '../../assets/image.png'; // Optional: If you have an image for login
+import { TextField, Button, Link, Typography } from '@mui/material';
+import { loginUser } from '../../utils/Api';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,32 +16,25 @@ const Login = () => {
     password: ''
   });
 
-  const [apiError, setApiError] = useState(''); // To handle API errors
-  const [isLoading, setIsLoading] = useState(false); // To handle loading state
+  const [apiError, setApiError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Email and Password Validation Patterns
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordMinLength = 8;
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
-
-    // Reset errors for the changed field
     setErrors({
       ...errors,
       [name]: ''
     });
-
-    // Reset API error when user starts typing
     setApiError('');
   };
 
-  // Form validation
   const validateForm = () => {
     const newErrors = {};
 
@@ -57,35 +47,29 @@ const Login = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setApiError(''); // Reset API error
+    setApiError('');
 
     if (validateForm()) {
       setIsLoading(true);
       try {
-        // Call the login API
         const response = await loginUser({
           email: formData.email,
           password: formData.password,
         });
 
-        // Handle successful login
         alert(response.message || 'Login successful!');
         
-        // Example: Store the token in localStorage (adjust based on your API response)
         if (response.token) {
           localStorage.setItem('token', response.token);
         }
 
-        // Redirect to the dashboard or desired page
-        navigate('/dashboard'); // Replace with your actual dashboard route
+        navigate('/dashboard');
       } catch (error) {
-        // Handle errors from the API
         setApiError(error || 'Login failed. Please try again.');
       } finally {
         setIsLoading(false);
@@ -96,9 +80,9 @@ const Login = () => {
   return (
     <div className="LoginContainer">
       <div className='LoginFundo'>
-        <h1>Fundo</h1>
-        <h2>Sign in</h2>
-        <p>Use your Fundo Account</p>
+        <Typography variant="h4" color="primary" gutterBottom>Fundo</Typography>
+        <Typography variant="h5" gutterBottom>Sign in</Typography>
+        <Typography variant="body2" gutterBottom style={{ marginBottom: '1px' }}>Use your Fundo Account</Typography>
       </div>
       
       <form className='LoginForm' onSubmit={handleSubmit}>
@@ -114,6 +98,7 @@ const Login = () => {
             required
             fullWidth
             margin="normal"
+            size="small"
           />
           <TextField
             label="Password"
@@ -127,36 +112,34 @@ const Login = () => {
             required
             fullWidth
             margin="normal"
+            size="small"
           />
         </div>
 
-        {/* Display API error */}
         {apiError && <p className="error-message">{apiError}</p>}
 
         <div className='Login-Forget'>
-          <Link href="/forgot-password" target="_blank" rel="noopener">Forget Password?</Link>
+          <Link href="/forgot-password" underline="none">Forget Password?</Link>
         </div>
         
         <div className="LoginLink">
-          <Link onClick={() => navigate(`/register`)} style={{ cursor: 'pointer', marginRight: 'auto' }} rel="noopener">
-            Create Account
-          </Link>
+          <Typography variant="body2">
+            <Link onClick={() => navigate(`/register`)} underline="none">
+              Create Account
+            </Link>
+          </Typography>
           <Button 
             variant="contained" 
             type="submit" 
             disabled={isLoading}
             color="primary"
+            size="medium"
+            style={{ width: 'auto', minWidth: '100px' }}
           >
             {isLoading ? 'Logging in...' : 'Login'}
           </Button>
         </div>
       </form>
-
-      {/* Optional: Add an image or illustration */}
-      {/* <div className="LoginImage">
-        <img src={image1} alt="Login visual" width="100%" />
-        <p>One account. All of Fundo working for you.</p>
-      </div> */}
     </div>
   );
 };

@@ -40,13 +40,15 @@ body, html {
 }
 
 .search-bar {
+  flex: 1; /* Makes the search bar take available space */
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .search-bar input {
   padding: 10px;
-  width: 200px;
+  width: 300px;
   border: none;
   border-radius: 5px;
 }
@@ -69,4 +71,16 @@ body, html {
   margin-left: 250px;
 }
 
-/* Material-UI Drawer */
+/* Drawer Styles */
+.MuiListItem-root.active-menu-item {
+  background-color: #fdf4e3; /* Light yellow for active item background */
+}
+
+.MuiListItem-root.active-menu-item .MuiListItemIcon-root {
+  color: #d4a017; /* Dark yellow for active item icon */
+}
+
+.MuiListItem-root.active-menu-item .MuiListItemText-root {
+  font-weight: bold;
+  color: #000; /* Darker text for active menu item */
+}

@@ -13,14 +13,16 @@ import {
   faTrash,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
+import TakeNote from "../TakeNote/TakeNote";  // Importing TakeNote component
 import "../dashboard/DashboardContainer.scss";
 
 const DashboardComponent = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Notes"); // Tracks the active menu item
   const [searchText, setSearchText] = useState("");
 
   const menuItems = [
-    { icon: faLightbulb, label: "Notes", isActive: true },
+    { icon: faLightbulb, label: "Notes" },
     { icon: faBell, label: "Reminders" },
     { icon: faPencilAlt, label: "Edit labels" },
     { icon: faArchive, label: "Archive" },
@@ -29,6 +31,10 @@ const DashboardComponent = () => {
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const handleMenuItemClick = (label) => {
+    setActiveItem(label); // Update the active item
   };
 
   const handleSearchChange = (e) => {
@@ -62,8 +68,8 @@ const DashboardComponent = () => {
           "& .MuiDrawer-paper": {
             width: "250px",
             boxSizing: "border-box",
-            marginTop: "60px", // Push the drawer below the header
-            height: "calc(100vh - 60px)", // Restrict the height to fit below the header
+            marginTop: "60px",
+            height: "calc(100vh - 60px)",
             borderRight: "1px solid #ddd",
           },
         }}
@@ -73,19 +79,14 @@ const DashboardComponent = () => {
             <ListItem
               button
               key={index}
-              sx={{
-                backgroundColor: item.isActive ? "#fdf4e3" : "transparent",
-                "&:hover": {
-                  backgroundColor: "#f6f6f6",
-                },
-                padding: "10px 20px",
-              }}
+              onClick={() => handleMenuItemClick(item.label)}
+              className={activeItem === item.label ? "active-menu-item" : ""}
             >
               <ListItemIcon>
                 <FontAwesomeIcon
                   icon={item.icon}
                   style={{
-                    color: item.isActive ? "#ffcc00" : "#666",
+                    color: activeItem === item.label ? "#d4a017" : "#666", // Dark yellow for active item
                     fontSize: "18px",
                   }}
                 />
@@ -94,8 +95,8 @@ const DashboardComponent = () => {
                 primary={item.label}
                 primaryTypographyProps={{
                   style: {
-                    color: item.isActive ? "#000" : "#333",
-                    fontWeight: item.isActive ? "bold" : "normal",
+                    color: activeItem === item.label ? "#000" : "#333",
+                    fontWeight: activeItem === item.label ? "bold" : "normal",
                   },
                 }}
               />
@@ -104,13 +105,10 @@ const DashboardComponent = () => {
         </List>
       </Drawer>
 
-      {/* Main content area
-      <div
-        className={`content-wrapper ${isDrawerOpen ? "drawer-open" : ""}`}
-      >
-        <h1>Main Content</h1>
-        <p>{searchText && `Searching for: ${searchText}`}</p>
-      </div> */}
+      {/* Main Content Section */}
+      <div className="dashboard-content">
+        {activeItem === "Notes" && <TakeNote />} {/* Render TakeNote only when "Notes" is active */}
+      </div>
     </div>
   );
 };

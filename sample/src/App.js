@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <RoutingModule />
-      {/* <NoteCard title="My First Note" description="This is a sample note." /> */}
       {/* <NoteContainer/> */}
     </div>
   );

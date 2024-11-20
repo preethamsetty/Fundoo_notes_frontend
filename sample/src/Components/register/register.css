@@ -3,59 +3,81 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 .RegisterPage {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 800px;
-  padding: 20px;
+  align-items: center;
+  width: 600px;
+  height: 400px;
+  /* min-height: 500px; */
+  padding: 30px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #fff;
 }
 
 .RegisterContainer {
   display: flex;
   flex-direction: column;
-  width: 50%; 
+  align-items: center;
+  width: 60%; 
+  padding-right: 20px;
 }
 
 .RegisterImage {
   display: flex;
   flex-direction: column;
-  width: 50%; 
-  font-size: 17px;
+  justify-content: center;
+  align-items: center;
+  width: 40%; 
+  font-size: 15px;
+  align-self: center;
+  margin-top: 70px;
 }
 
 .RegisterInput-group-1,
 .RegisterPassword {
   display: flex;
-  gap: 20px; 
+  gap: 20px;
   font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.RegisterInput-group-1 > *,
+.RegisterPassword > * {
+  width: 48%;
 }
 
 .RegisterEmail {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 10px;
 }
 
-input[type="text"], input[type="password"] {
-  width: 100%;
-  padding: 10px;
+.RegisterForm {
+  font-size: 10px;
+  margin-top: 10px;
 }
 
-.RegisterForm{
-  font-size: 12px;
+.register-input {
+  margin-bottom: 5px;
 }
 
 button {
-  background-color: blue;
+  background-color: #1a73e8;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #1557b0;
 }
 
 .RegisterLink {
@@ -64,10 +86,97 @@ button {
   align-items: center;
   width: 100%;
   font-size: 16px;
+  margin-top: 20px;
 }
 
-.RegisterContainer p,
-.RegisterContainer h1,
-.RegisterContainer h2 {
+.RegisterContainer h1 {
+  font-size: 24px;
+  color: #1a73e8;
+  margin-bottom: 0;
   text-align: left;
+}
+
+.RegisterContainer h2 {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.RegisterContainer p {
+  font-size: 12px;
+  color: #5f6368;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.RegisterLink a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.RegisterImage p {
+  text-align: center;
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .RegisterPage {
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    padding: 24px 20px;
+    margin: 16px;
+  }
+
+  .RegisterContainer {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .RegisterImage {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .RegisterInput-group-1,
+  .RegisterPassword {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .RegisterInput-group-1 > *,
+  .RegisterPassword > * {
+    width: 100%;
+  }
+
+  .RegisterLink {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .RegisterLink button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .RegisterPage {
+    padding: 16px;
+  }
+
+  .RegisterContainer h1 {
+    font-size: 22px;
+  }
+
+  .RegisterContainer h2 {
+    font-size: 18px;
+  }
+
+  .RegisterContainer p {
+    font-size: 14px;
+  }
 }

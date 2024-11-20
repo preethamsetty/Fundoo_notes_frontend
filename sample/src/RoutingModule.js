@@ -28,14 +28,14 @@ function RoutingModule() {
   //             path: "/notes",
   //             element: <NoteContainer/>
   //         },
-  //         // {
-  //         //     path: "/archive",
-  //         //     element: <ArchiveContainer/>
-  //         // },
-  //         // {
-  //         //     path: "/trash",
-  //         //     element: <TrashContainer/>
-  //         // }
+  //         {
+  //             path: "/archive",
+  //             element: <ArchiveContainer/>
+  //         },
+  //         {
+  //             path: "/trash",
+  //             element: <TrashContainer/>
+  //         }
   //     ]
   // }
   ]

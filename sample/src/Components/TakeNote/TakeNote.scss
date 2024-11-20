@@ -1,42 +1,156 @@
-.NoteContainer {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 15px;
+.take-note {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+
+  &__collapsed,
+  &__expanded {
+    padding: 1rem;
+  }
+
+  // Collapsed state (initial state)
+  &__collapsed {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
   }
-  
-  .note-placeholder {
+
+  &__placeholder {
+    color: var(--muted-foreground);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  &__actions {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f1f1f1;
-    cursor: pointer;
+    gap: 0.5rem;
   }
-  
-  .note-placeholder span {
-    color: #999;
-  }
-  
-  .note-icons {
+
+  &__action-btn,
+  &__tool-btn {
+    height: 2.25rem;
+    width: 2.25rem;
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
-  
-  .note-editing {
+
+  &__action-btn:hover,
+  &__tool-btn:hover {
+    background-color: #e0e0e0;
+  }
+
+  &__icon {
+    height: 1rem;
+    width: 1rem;
+    color: var(--foreground);
+  }
+
+  // Expanded state
+  &__expanded {
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
   }
-  
-  .note-editing .MuiTextField-root {
-    margin-bottom: 10px;
-  }
-  
-  .note-save {
+
+  &__header {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
   }
-  
+
+  // Title input
+  &__title {
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    color: var(--foreground);
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: var(--muted-foreground);
+    }
+  }
+
+  // Content textarea
+  &__content {
+    min-height: 100px;
+    border: none;
+    resize: none;
+    padding-left: 0;
+    padding-right: 0;
+    color: var(--foreground);
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: var(--muted-foreground);
+    }
+  }
+
+  // Footer section for action buttons and close button
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  &__tools {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  // Tool buttons in the footer (icons)
+  &__tool-btn {
+    background-color: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    padding: 0.25rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  &__tool-btn:hover {
+    border-color: #bdbdbd;
+  }
+
+  // Close button in footer
+  &__close-btn {
+    font-size: 0.875rem;
+    color: #1976d2;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  &__close-btn:hover {
+    color: #1565c0;
+  }
+}
