@@ -1,0 +1,35 @@
+.dashboard-drawer {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+  
+    &.open {
+      width: 250px;
+  
+      .drawer-content {
+        padding: 16px;
+        .MuiListItem-root {
+          &:hover {
+            background-color: #fff5e1;
+          }
+        }
+      }
+    }
+  
+    &:not(.open) {
+      width: 90px;
+  
+      .drawer-content {
+        padding: 12px;
+        .MuiListItem-root {
+          &:hover {
+            background-color: #fff5e1;
+          }
+        }
+      }
+    }
+  }
+  
