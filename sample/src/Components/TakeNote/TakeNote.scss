@@ -1,156 +1,134 @@
 .take-note {
   width: 100%;
-  max-width: 32rem;
+  max-width: 600px; /* Keeps the width consistent across both states */
   margin: 0 auto;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
   border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+              0 2px 6px 2px rgba(60, 64, 67, 0.149);
+  transition: box-shadow 0.2s ease-in-out, padding 0.2s ease-in-out;
 
-  &__collapsed,
-  &__expanded {
-    padding: 1rem;
+  &:hover {
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302),
+                0 4px 8px 3px rgba(60, 64, 67, 0.149);
   }
 
-  // Collapsed state (initial state)
   &__collapsed {
+    padding: 16px; /* Matches the expanded padding */
+    cursor: pointer;
+  }
+
+  &__input-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
   }
 
   &__placeholder {
-    color: var(--muted-foreground);
-    font-size: 1rem;
-    font-weight: 400;
+    color: #5f6368;
+    font-size: 14px;
+  }
+
+  &__quick-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #5f6368;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(95, 99, 104, 0.039);
+    }
+  }
+
+  &__expanded {
+    padding: 16px;
+  }
+
+  &__title {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+
+    &::placeholder {
+      color: #5f6368;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    min-height: 100px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    resize: none;
+    margin-bottom: 16px;
+
+    &::placeholder {
+      color: #5f6368;
+    }
   }
 
   &__actions {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  &__action-btn,
-  &__tool-btn {
-    height: 2.25rem;
-    width: 2.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  &__action-btn:hover,
-  &__tool-btn:hover {
-    background-color: #e0e0e0;
-  }
-
-  &__icon {
-    height: 1rem;
-    width: 1rem;
-    color: var(--foreground);
-  }
-
-  // Expanded state
-  &__expanded {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-
-  // Title input
-  &__title {
-    border: none;
-    font-size: 1.125rem;
-    font-weight: 500;
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-    color: var(--foreground);
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: none;
-    }
-
-    &::placeholder {
-      color: var(--muted-foreground);
-    }
-  }
-
-  // Content textarea
-  &__content {
-    min-height: 100px;
-    border: none;
-    resize: none;
-    padding-left: 0;
-    padding-right: 0;
-    color: var(--foreground);
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: none;
-    }
-
-    &::placeholder {
-      color: var(--muted-foreground);
-    }
-  }
-
-  // Footer section for action buttons and close button
-  &__footer {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
   }
 
   &__tools {
     display: flex;
-    gap: 0.5rem;
+    gap: 8px;
   }
 
-  // Tool buttons in the footer (icons)
   &__tool-btn {
-    background-color: transparent;
-    border: 1px solid #e0e0e0;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    padding: 0.25rem;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-  }
-
-  &__tool-btn:hover {
-    border-color: #bdbdbd;
-  }
-
-  // Close button in footer
-  &__close-btn {
-    font-size: 0.875rem;
-    color: #1976d2;
-    background: none;
     border: none;
+    background: transparent;
+    color: #5f6368;
     cursor: pointer;
-    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(95, 99, 104, 0.039);
+    }
   }
 
-  &__close-btn:hover {
-    color: #1565c0;
+  &__close-btn {
+    border: none;
+    background: transparent;
+    color: #5f6368;
+    font-size: 14px;
+    padding: 8px 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(95, 99, 104, 0.039);
+    }
   }
 }
+

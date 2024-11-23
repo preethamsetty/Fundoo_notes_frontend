@@ -1,9 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Register from "./Components/register/register";
 import Login from "./Components/login/login";
-import NoteCard from "./Components/notecard/NoteCard";
 import DashboardContainer from "./Components/dashboard/DashboardContainer"
-import NoteContainer from "./Components/TakeNote/TakeNote"
+// import NoteContainer from "./Components/TakeNote/TakeNote"
+import NoteContainer from "./Components/NoteContainer/NoteContainer"
+import ArchiveContainer from "./Components/ArchiveContainer/ArchiveContainer";
+import TrashContainer from "./Components/TrashContainer/TrashContainer";
 
 function RoutingModule() {
   // Define the routes
@@ -18,26 +20,22 @@ function RoutingModule() {
     },
     {
       path: "dashboard",
-      element: <DashboardContainer/>
-    },
-  //   {
-  //     path: "/dashboard",
-  //     element: <DashboardContainer/>,
-  //     children: [
-  //         {
-  //             path: "/notes",
-  //             element: <NoteContainer/>
-  //         },
-  //         {
-  //             path: "/archive",
-  //             element: <ArchiveContainer/>
-  //         },
-  //         {
-  //             path: "/trash",
-  //             element: <TrashContainer/>
-  //         }
-  //     ]
-  // }
+      element: <DashboardContainer/>,
+      children: [
+          {
+              path: "notes",
+              element: <NoteContainer/>
+          },
+          {
+              path: "archive",
+              element: <ArchiveContainer/>
+          },
+          {
+              path: "trash",
+              element: <TrashContainer/>
+          }
+      ]
+  }
   ]
 );
 
