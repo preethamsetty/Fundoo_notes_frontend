@@ -1,0 +1,32 @@
+.trash-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  
+    .trash-note {
+      background-color: #fff4f4;
+      border: 1px solid #ffc0cb;
+      border-radius: 8px;
+      padding: 15px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+      h3 {
+        margin: 0 0 10px;
+        color: #b22222;
+      }
+  
+      p {
+        margin: 0;
+        color: #8b0000;
+      }
+    }
+  
+    .empty-message {
+      color: #888;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  }
+  
