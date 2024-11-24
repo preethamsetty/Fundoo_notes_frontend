@@ -43,4 +43,21 @@ export const fetchNotes = async () => {
   }
 };
 
+// Function to create a new note
+export const createNote = async (noteData) => {
+  const token = localStorage.getItem('token');
+  if (!token) throw new Error('User is not logged in.');
+
+  try {
+    const response = await axios.post(`${BASE_URL}/notes`, noteData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    const errorMessage = error.response?.data?.message || 'Error creating note.';
+    throw new Error(errorMessage);
+  }
+};
 
