@@ -5,15 +5,20 @@ body {
   min-height: 100vh;
   background-color: #f8f9fa;
   font-family: 'Roboto', Arial, sans-serif;
+  margin: 0; /* Ensure no body margin */
+  padding: 0; /* Remove any padding on the body */
 }
 
 .LoginContainer {
-  width: 350px;
+  width: 100%;
+  max-width: 350px; /* Limit the max width */
   padding: 48px 40px 36px;
   border: 1px solid #dadce0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  box-sizing: border-box; /* Ensure the padding is included in the width */
+  margin: 0 16px; /* Ensure no margin issues on the sides */
 }
 
 .LoginFundo {
@@ -44,6 +49,7 @@ button {
   cursor: pointer;
   font-weight: 500;
   text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -97,16 +103,13 @@ button:hover {
   font-size: 14px;
 }
 
-@media (max-width: 600px) {
+/* Media Queries */
+@media (max-width: 768px) {
   .LoginContainer {
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     padding: 24px 20px 18px;
     margin: 0 16px;
-  }
-
-  .LoginFundo {
-    margin-bottom: 24px;
   }
 
   .MuiTypography-h4 {
@@ -119,6 +122,47 @@ button:hover {
 
   .MuiTypography-body1 {
     font-size: 14px;
+  }
+
+  .LoginLink {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .LoginLink .MuiButton-root {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .LoginContainer {
+    max-width: 100%;
+    margin: 0 16px;
+  }
+
+  .LoginInput {
+    margin-bottom: 12px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+
+  .LoginFundo {
+    margin-bottom: 16px;
+  }
+
+  .MuiTypography-h4 {
+    font-size: 20px;
+  }
+
+  .MuiTypography-h5 {
+    font-size: 16px;
+  }
+
+  .MuiTypography-body1 {
+    font-size: 12px;
   }
 
   .LoginLink {

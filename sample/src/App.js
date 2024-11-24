@@ -21,6 +21,7 @@ function App() {
       {/* <DrawerComponent/> */}
       {/* <DashboardContainer/> */}
       {/* <PracticeDash/> */}
+      {/* <NoteCard/> */}
     </div>
   );
 }
