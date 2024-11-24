@@ -26,57 +26,111 @@
 
 // export default NoteCard;
 
-import React, { useState } from 'react';
-import { Bell, Users, Palette, ImageIcon, Archive, MoreVertical, Check, Pin } from 'lucide-react';
+// import React, { useState } from 'react';
+// import { Bell, Users, Palette, ImageIcon, Archive, MoreVertical, Check, Pin } from 'lucide-react';
+// import './NoteCard.scss';
+
+// const NoteCard = ({ title, content }) => {
+//   const [isHovered, setIsHovered] = useState(false);
+
+//   return (
+//     <div 
+//       className="note-card"
+//       onMouseEnter={() => setIsHovered(true)}
+//       onMouseLeave={() => setIsHovered(false)}
+//     >
+//       <div className="note-card__header">
+//         <div className="note-card__check">
+//           <Check size={16} />
+//         </div>
+//         <div className="note-card__pin">
+//           <Pin size={16} />
+//         </div>
+//       </div>
+
+//       <div className="note-card__content">
+//         <h3 className="note-card__title">{title || 'Empty note'}</h3>
+//         <p className="note-card__text">{content}</p>
+//       </div>
+
+//       {isHovered && (
+//         <div className="note-card__actions">
+//           <button className="note-card__action-btn" title="Remind me">
+//             <Bell size={16} />
+//           </button>
+//           <button className="note-card__action-btn" title="Collaborator">
+//             <Users size={16} />
+//           </button>
+//           <button className="note-card__action-btn" title="Background options">
+//             <Palette size={16} />
+//           </button>
+//           <button className="note-card__action-btn" title="Add image">
+//             <ImageIcon size={16} />
+//           </button>
+//           <button className="note-card__action-btn" title="Archive">
+//             <Archive size={16} />
+//           </button>
+//           <button className="note-card__action-btn" title="More">
+//             <MoreVertical size={16} />
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default NoteCard;
+
+// import React from 'react';
+// import './NoteCard.scss';
+
+// const NoteCard = ({ note, onArchive, onDelete }) => {
+//   return (
+//     <div className="note-card">
+//       <h3 className="note-card__title">{note.title}</h3>
+//       <p className="note-card__content">{note.content}</p>
+//       <div className="note-card__actions">
+//         <button className="note-card__action-btn" onClick={() => onArchive(note.id)}>
+//           Archive
+//         </button>
+//         <button className="note-card__action-btn" onClick={() => onDelete(note.id)}>
+//           Delete
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default NoteCard;
+
+import React from 'react';
 import './NoteCard.scss';
 
-const NoteCard = ({ title, content }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const NoteCard = ({ note, onArchive, onDelete }) => {
   return (
-    <div 
-      className="note-card"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="note-card__header">
-        <div className="note-card__check">
-          <Check size={16} />
-        </div>
-        <div className="note-card__pin">
-          <Pin size={16} />
-        </div>
+    <div className="note-card">
+      <h3 className="note-card__title">{note.title}</h3>
+      <p className="note-card__content">{note.description}</p>
+      <div className="note-card__actions">
+        <button 
+          className="note-card__action-btn" 
+          onClick={() => onArchive(note._id)}
+          disabled={note.isArchive}
+        >
+          {note.isArchive ? 'Archived' : 'Archive'}
+        </button>
+        <button 
+          className="note-card__action-btn" 
+          onClick={() => onDelete(note._id)}
+          disabled={note.isTrash}
+        >
+          {note.isTrash ? 'In Trash' : 'Delete'}
+        </button>
       </div>
-
-      <div className="note-card__content">
-        <h3 className="note-card__title">{title || 'Empty note'}</h3>
-        <p className="note-card__text">{content}</p>
-      </div>
-
-      {isHovered && (
-        <div className="note-card__actions">
-          <button className="note-card__action-btn" title="Remind me">
-            <Bell size={16} />
-          </button>
-          <button className="note-card__action-btn" title="Collaborator">
-            <Users size={16} />
-          </button>
-          <button className="note-card__action-btn" title="Background options">
-            <Palette size={16} />
-          </button>
-          <button className="note-card__action-btn" title="Add image">
-            <ImageIcon size={16} />
-          </button>
-          <button className="note-card__action-btn" title="Archive">
-            <Archive size={16} />
-          </button>
-          <button className="note-card__action-btn" title="More">
-            <MoreVertical size={16} />
-          </button>
-        </div>
-      )}
     </div>
   );
 };
 
 export default NoteCard;
+
+

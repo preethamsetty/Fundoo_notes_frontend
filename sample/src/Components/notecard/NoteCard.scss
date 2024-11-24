@@ -54,111 +54,206 @@
 //   }
   
 
+// .note-card {
+//   position: relative;
+//   width: 240px;
+//   min-height: 100px;
+//   background-color: #fff;
+//   border: 1px solid #e0e0e0;
+//   border-radius: 8px;
+//   padding: 16px;
+//   transition: box-shadow 0.2s ease-in-out;
+//   cursor: default;
+
+//   &:hover {
+//     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+//                 0 2px 6px 2px rgba(60, 64, 67, 0.149);
+//   }
+
+//   &__header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 12px;
+//   }
+
+//   &__check,
+//   &__pin {
+//     width: 20px;
+//     height: 20px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     color: #5f6368;
+//     opacity: 0;
+//     transition: opacity 0.2s ease-in-out;
+
+//     .note-card:hover & {
+//       opacity: 1;
+//     }
+//   }
+
+//   &__content {
+//     margin-bottom: 16px;
+//   }
+
+//   &__title {
+//     font-size: 16px;
+//     font-weight: 500;
+//     color: #202124;
+//     margin: 0 0 8px 0;
+//   }
+
+//   &__text {
+//     font-size: 14px;
+//     color: #5f6368;
+//     margin: 0;
+//     line-height: 1.5;
+//     overflow: hidden;
+//     display: -webkit-box;
+//     -webkit-line-clamp: 6;
+//     -webkit-box-orient: vertical;
+//   }
+
+//   &__actions {
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     gap: 4px;
+//     padding: 8px;
+//     background-color: #fff;
+//     border-radius: 0 0 8px 8px;
+//     opacity: 0;
+//     transform: translateY(100%);
+//     animation: slideUp 0.2s ease-out forwards;
+//   }
+
+//   &__action-btn {
+//     width: 32px;
+//     height: 32px;
+//     border-radius: 50%;
+//     border: none;
+//     background: transparent;
+//     color: #5f6368;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0;
+//     transition: background-color 0.2s ease;
+
+//     &:hover {
+//       background-color: rgba(95, 99, 104, 0.039);
+//     }
+//   }
+// }
+
+// @keyframes slideUp {
+//   from {
+//     opacity: 0;
+//     transform: translateY(100%);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// .note-card {
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
+//   padding: 16px;
+//   transition: box-shadow 0.2s ease-in-out;
+
+//   &:hover {
+//     box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
+//   }
+
+//   &__title {
+//     font-size: 18px;
+//     font-weight: 500;
+//     margin-bottom: 8px;
+//   }
+
+//   &__content {
+//     font-size: 14px;
+//     color: #5f6368;
+//     margin-bottom: 16px;
+//   }
+
+//   &__actions {
+//     display: flex;
+//     justify-content: flex-end;
+//     gap: 8px;
+
+//     &__action-btn {
+//       border: none;
+//       background: transparent;
+//       color: #5f6368;
+//       cursor: pointer;
+//       padding: 4px 8px;
+//       font-size: 14px;
+//       border-radius: 4px;
+//       transition: background-color 0.2s ease;
+
+//       &:hover {
+//         background-color: rgba(95, 99, 104, 0.039);
+//       }
+//     }
+//   }
+// }
+
 .note-card {
-  position: relative;
-  width: 240px;
-  min-height: 100px;
   background-color: #fff;
-  border: 1px solid #e0e0e0;
   border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  transition: box-shadow 0.2s ease-in-out;
-  cursor: default;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
-                0 2px 6px 2px rgba(60, 64, 67, 0.149);
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-
-  &__check,
-  &__pin {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #5f6368;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-
-    .note-card:hover & {
-      opacity: 1;
-    }
-  }
-
-  &__content {
-    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 
   &__title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #202124;
-    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
   }
 
-  &__text {
-    font-size: 14px;
-    color: #5f6368;
-    margin: 0;
-    line-height: 1.5;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
+  &__content {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 16px;
+    flex-grow: 1;
   }
 
   &__actions {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    padding: 8px;
-    background-color: #fff;
-    border-radius: 0 0 8px 8px;
-    opacity: 0;
-    transform: translateY(100%);
-    animation: slideUp 0.2s ease-out forwards;
+    justify-content: flex-end;
   }
 
   &__action-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    background-color: transparent;
     border: none;
-    background: transparent;
-    color: #5f6368;
+    color: #1a73e8;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    transition: background-color 0.2s ease;
+    font-size: 0.9rem;
+    margin-left: 12px;
+    padding: 4px 8px;
+    transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: rgba(95, 99, 104, 0.039);
+      background-color: rgba(26, 115, 232, 0.1);
+      border-radius: 4px;
     }
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
