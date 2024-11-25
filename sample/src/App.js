@@ -8,7 +8,7 @@ import TakeNote from './Components/TakeNote/TakeNote.jsx';
 import DrawerComponent from './Components/Drawer/Drawer.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Import BrowserRouter
 import DashboardContainer from './Components/dashboard/DashboardContainer.jsx';
-import PracticeDash from './Components/PracticeDash/PracticeDash.jsx';
+
 function App() {
   return (
     <div className="App">
@@ -20,7 +20,6 @@ function App() {
       {/* <TakeNote/> */}
       {/* <DrawerComponent/> */}
       {/* <DashboardContainer/> */}
-      {/* <PracticeDash/> */}
       {/* <NoteCard/> */}
     </div>
   );

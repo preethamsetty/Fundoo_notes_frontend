@@ -1,25 +1,31 @@
 import React from 'react';
+import { Bell, Users, Palette, Image, Archive, MoreVertical, Check } from 'lucide-react';
 import './NoteCard.scss';
 
 const NoteCard = ({ note, onArchive, onDelete }) => {
   return (
     <div className="note-card">
+      <div className="note-card__header">
+        <Check size={18} className="note-card__check" />
+        <Bell size={18} className="note-card__reminder" />
+      </div>
       <h3 className="note-card__title">{note.title}</h3>
       <p className="note-card__content">{note.description}</p>
       <div className="note-card__actions">
-        <button 
-          className="note-card__action-btn" 
-          onClick={() => onArchive(note._id)}
-          disabled={note.isArchive}
-        >
-          {note.isArchive ? 'Archived' : 'Archive'}
+        <button className="note-card__action-btn" title="Remind me">
+          <Bell size={16} />
         </button>
-        <button 
-          className="note-card__action-btn" 
-          onClick={() => onDelete(note._id)}
-          disabled={note.isTrash}
-        >
-          {note.isTrash ? 'In Trash' : 'Delete'}
+        <button className="note-card__action-btn" title="Collaborator">
+          <Users size={16} />
+        </button>
+        <button className="note-card__action-btn" title="Background options">
+          <Palette size={16} />
+        </button>
+        <button className="note-card__action-btn" onClick={() => onArchive(note._id)} title="Archive">
+          <Archive size={16} />
+        </button>
+        <button className="note-card__action-btn" title="More">
+          <MoreVertical size={16} />
         </button>
       </div>
     </div>

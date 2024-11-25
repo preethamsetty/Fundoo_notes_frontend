@@ -1,49 +1,110 @@
 .note-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding: 16px;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
+  width: auto;
+  height: auto;
+  min-width: 200px; // Ensures a minimum size for consistency
+  max-width: 300px; // Adjust as needed to prevent overly large cards
+  margin: 8px;
+  transition: box-shadow 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+  border: 1px solid #e0e0e0;
 
   &:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+    .note-card__actions {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .note-card__header {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  &__check,
+  &__reminder {
+    color: #5f6368;
+    cursor: pointer;
+
+    &:hover {
+      color: #202124;
+    }
   }
 
   &__title {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 500;
     margin-bottom: 8px;
-    color: #333;
+    color: #202124;
+    word-wrap: break-word;
   }
 
   &__content {
-    font-size: 1rem;
-    color: #666;
+    font-size: 0.875rem;
+    color: #5f6368;
     margin-bottom: 16px;
     flex-grow: 1;
+    word-wrap: break-word;
   }
 
   &__actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between; // Ensures equal spacing between icons
+    gap: 16px; // Adds space between buttons
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
   }
 
   &__action-btn {
     background-color: transparent;
     border: none;
-    color: #1a73e8;
+    color: #5f6368;
     cursor: pointer;
-    font-size: 0.9rem;
-    margin-left: 12px;
-    padding: 4px 8px;
-    transition: background-color 0.3s ease;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: rgba(26, 115, 232, 0.1);
-      border-radius: 4px;
+      background-color: rgba(95, 99, 104, 0.1);
+      color: #202124;
+    }
+
+    &:disabled {
+      color: #dadce0;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }
 
+// Media query for smaller screens
+@media (max-width: 768px) {
+  .note-card {
+    width: 100%;
+  }
+}

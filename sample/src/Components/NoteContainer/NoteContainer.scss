@@ -1,6 +1,47 @@
+// .note-container {
+//   padding: 20px;
+//   max-width: 100%;
+//   margin: 0 auto;
+
+//   &__loading,
+//   &__error,
+//   &__empty {
+//     text-align: center;
+//     font-size: 1.2rem;
+//     margin-top: 20px;
+//     color: #666;
+//   }
+
+//   &__error {
+//     color: #ff0000;
+//   }
+
+//   &__notes-wrapper {
+//     width: 100%;
+//     overflow-x: auto;
+//     padding: 20px 0;
+//   }
+
+//   &__notes {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     gap: 20px;
+//     padding-bottom: 20px; // Add some padding to account for potential scrollbar
+//   }
+// }
+
+// // Media query for smaller screens
+// @media (max-width: 768px) {
+//   .note-container {
+//     &__notes {
+//       flex-wrap: wrap;
+//     }
+//   }
+// }
+
 .note-container {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 
   &__loading,
@@ -16,12 +57,26 @@
     color: #ff0000;
   }
 
+  &__notes-wrapper {
+    width: 100%;
+    padding: 20px 0;
+  }
+
   &__notes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; // Allow wrapping to the next row
+    gap: 20px; // Add spacing between notes
+    justify-content: center; // Align items to the center
+    padding-bottom: 20px; // Add some padding to the bottom
   }
 }
 
-
+// Media query for smaller screens
+@media (max-width: 768px) {
+  .note-container {
+    &__notes {
+      flex-wrap: wrap;
+      gap: 15px; // Adjust gap for smaller screens
+    }
+  }
+}
