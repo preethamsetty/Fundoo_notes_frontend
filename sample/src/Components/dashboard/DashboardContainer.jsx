@@ -23,6 +23,7 @@ const DashboardContainer = () => {
             transition: "margin-left 0.3s",
           }}
         >
+          {/* The Outlet dynamically renders the child route component */}
           <Outlet />
         </Box>
       </div>

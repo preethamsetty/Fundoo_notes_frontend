@@ -1,19 +1,40 @@
-import React from 'react';
-import './ArchiveContainer.scss';
+import React, { useState, useEffect } from "react";
+import NoteCard from "../notecard/NoteCard";
+import { fetchNotes } from "../../utils/Api";
+import "./ArchiveContainer.scss";
 
-const ArchiveContainer = ({ archivedNotes }) => {
+const ArchiveContainer = () => {
+  const [archivedNotes, setArchivedNotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getArchivedNotes = async () => {
+      try {
+        const response = await fetchNotes();
+        const archivedNotes = response.data.filter((note) => note.isArchive);
+        setArchivedNotes(archivedNotes);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getArchivedNotes();
+  }, []);
+
+  if (isLoading) return <div>Loading archived notes...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <div className="archive-container">
-      {archivedNotes && archivedNotes.length > 0 ? (
-        archivedNotes.map((note) => (
-          <div key={note.id} className="archive-note">
-            <h3>{note.title}</h3>
-            <p>{note.description}</p>
-          </div>
-        ))
-      ) : (
-        <p className="empty-message">No archived notes available</p>
-      )}
+      <h3>Archived Notes</h3>
+      <div className="archive-container__notes">
+        {archivedNotes.map((note) => (
+          <NoteCard key={note._id} note={note} />
+        ))}
+      </div>
     </div>
   );
 };

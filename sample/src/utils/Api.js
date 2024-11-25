@@ -61,3 +61,20 @@ export const createNote = async (noteData) => {
   }
 };
 
+export const archiveNote = async (id) => {
+  const token = localStorage.getItem('token');
+  if (!token) throw new Error('User is not logged in.');
+
+  try {
+    const response = await axios.put(`${BASE_URL}/notes/${id}/archive`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    const errorMessage = error.response?.data?.message || 'Error archiving note.';
+    throw new Error(errorMessage);
+  }
+};
+

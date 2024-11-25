@@ -1,44 +1,3 @@
-// .note-container {
-//   padding: 20px;
-//   max-width: 100%;
-//   margin: 0 auto;
-
-//   &__loading,
-//   &__error,
-//   &__empty {
-//     text-align: center;
-//     font-size: 1.2rem;
-//     margin-top: 20px;
-//     color: #666;
-//   }
-
-//   &__error {
-//     color: #ff0000;
-//   }
-
-//   &__notes-wrapper {
-//     width: 100%;
-//     overflow-x: auto;
-//     padding: 20px 0;
-//   }
-
-//   &__notes {
-//     display: flex;
-//     flex-wrap: nowrap;
-//     gap: 20px;
-//     padding-bottom: 20px; // Add some padding to account for potential scrollbar
-//   }
-// }
-
-// // Media query for smaller screens
-// @media (max-width: 768px) {
-//   .note-container {
-//     &__notes {
-//       flex-wrap: wrap;
-//     }
-//   }
-// }
-
 .note-container {
   padding: 20px;
   max-width: 100%;
@@ -69,6 +28,11 @@
     justify-content: center; // Align items to the center
     padding-bottom: 20px; // Add some padding to the bottom
   }
+
+  // Add spacing below the TakeNote component
+  &__take-note-spacing {
+    margin-bottom: 30px; // Adjust this value to increase/decrease spacing
+  }
 }
 
 // Media query for smaller screens
@@ -80,3 +44,4 @@
     }
   }
 }
+
