@@ -13,7 +13,6 @@ const NoteContainer = () => {
     const getNotes = async () => {
       try {
         const response = await fetchNotes();
-        // Filter out notes that are not archived and not trashed
         const activeNotes = response.data.filter(
           (note) => !note.isArchive && !note.isTrash
         );
@@ -35,7 +34,6 @@ const NoteContainer = () => {
   const handleArchiveNote = async (id) => {
     try {
       await archiveNote(id);
-      // Remove the archived note from active notes
       setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
     } catch (err) {
       console.error("Error archiving note:", err.message);
@@ -45,7 +43,6 @@ const NoteContainer = () => {
   const handleTrashNote = async (id) => {
     try {
       await trashNote(id);
-      // Remove the trashed note from active notes
       setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
     } catch (err) {
       console.error("Error trashing note:", err.message);
@@ -64,7 +61,7 @@ const NoteContainer = () => {
             key={note._id}
             note={note}
             onArchive={handleArchiveNote}
-            onDelete={handleTrashNote}
+            onTrash={handleTrashNote}
           />
         ))}
       </div>
@@ -73,3 +70,4 @@ const NoteContainer = () => {
 };
 
 export default NoteContainer;
+

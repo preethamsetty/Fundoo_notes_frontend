@@ -1,5 +1,5 @@
 import React from "react";
-import { Bell, Trash2, Palette, Archive, MoreVertical, Check } from "lucide-react";
+import { Bell, Trash2, Palette, Archive, MoreVertical, Check } from 'lucide-react';
 import "./NoteCard.scss";
 
 const NoteCard = ({ note, onArchive, onTrash }) => {
@@ -17,14 +17,14 @@ const NoteCard = ({ note, onArchive, onTrash }) => {
         </button>
         <button
           className="note-card__action-btn"
-          onClick={() => onTrash(note._id)} // Handle trash functionality
+          onClick={() => onTrash(note._id)}
           title="Trash"
         >
           <Trash2 size={16} />
         </button>
         <button
           className="note-card__action-btn"
-          onClick={() => onArchive(note._id)} // Handle archive/unarchive functionality
+          onClick={() => onArchive(note._id)}
           title={note.isArchive ? "Unarchive" : "Archive"}
         >
           <Archive size={16} />
@@ -41,3 +41,4 @@ const NoteCard = ({ note, onArchive, onTrash }) => {
 };
 
 export default NoteCard;
+
