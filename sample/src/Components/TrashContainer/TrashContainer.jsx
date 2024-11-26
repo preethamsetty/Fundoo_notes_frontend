@@ -43,7 +43,7 @@
 
 import React, { useState, useEffect } from "react";
 import TrashedNoteCard from "../TrashedNoteCard/TrashedNoteCard";
-import { fetchNotes, trashNote } from "../../utils/Api";
+import { fetchNotes, trashNote, deleteNotePermanently } from "../../utils/Api";
 import "./TrashContainer.scss";
 
 const TrashContainer = () => {
@@ -77,9 +77,12 @@ const TrashContainer = () => {
   };
 
   const handleDeleteForever = async (id) => {
-    // Implement the delete forever functionality here
-    // This should call an API to permanently delete the note
-    console.log("Delete forever functionality not implemented yet");
+    try {
+      await deleteNotePermanently(id);
+      setTrashedNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+    } catch (err) {
+      console.error("Error deleting note permanently:", err.message);
+    }
   };
 
   if (isLoading) return <div>Loading trashed notes...</div>;

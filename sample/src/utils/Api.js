@@ -183,3 +183,20 @@ export const trashNote = async (id) => {
     throw new Error(errorMessage);
   }
 };
+
+export const deleteNotePermanently = async (id) => {
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("User is not logged in.");
+
+  try {
+    const response = await axios.delete(`${BASE_URL}/notes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    const errorMessage = error.response?.data?.message || "Error deleting note permanently.";
+    throw new Error(errorMessage);
+  }
+};
