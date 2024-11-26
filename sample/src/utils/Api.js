@@ -1,15 +1,96 @@
-import axios from 'axios';
+// import axios from 'axios';
+
+// // Base URL for the backend API
+// const BASE_URL = 'http://localhost:8000/api/v1';
+
+// // Function to call the register API
+// export const registerUser = async (userData) => {
+//   try {
+//     const response = await axios.post(`${BASE_URL}/users`, userData);
+//     return response.data;
+//   } catch (error) {
+//     const errorMessage = error.response?.data?.message || 'An error occurred while registering.';
+//     throw new Error(errorMessage);
+//   }
+// };
+
+// // Function to call the login API
+// export const loginUser = async (credentials) => {
+//   try {
+//     const response = await axios.post(`${BASE_URL}/users/login`, credentials);
+//     return response.data;
+//   } catch (error) {
+//     const errorMessage = error.response?.data?.message || 'Invalid email or password.';
+//     throw new Error(errorMessage);
+//   }
+// };
+
+// // Function to fetch notes
+// export const fetchNotes = async () => {
+//   const token = localStorage.getItem('token');
+//   if (!token) throw new Error('User is not logged in.');
+
+//   try {
+//     const response = await axios.get(`${BASE_URL}/notes`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     return response.data;
+//   } catch (error) {
+//     const errorMessage = error.response?.data?.message || 'Error fetching notes.';
+//     throw new Error(errorMessage);
+//   }
+// };
+
+// // Function to create a new note
+// export const createNote = async (noteData) => {
+//   const token = localStorage.getItem('token');
+//   if (!token) throw new Error('User is not logged in.');
+
+//   try {
+//     const response = await axios.post(`${BASE_URL}/notes`, noteData, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     return response.data;
+//   } catch (error) {
+//     const errorMessage = error.response?.data?.message || 'Error creating note.';
+//     throw new Error(errorMessage);
+//   }
+// };
+
+// export const archiveNote = async (id) => {
+//   const token = localStorage.getItem('token');
+//   if (!token) throw new Error('User is not logged in.');
+
+//   try {
+//     const response = await axios.put(`${BASE_URL}/notes/${id}/archive`, {}, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     return response.data;
+//   } catch (error) {
+//     const errorMessage = error.response?.data?.message || 'Error archiving note.';
+//     throw new Error(errorMessage);
+//   }
+// };
+
+import axios from "axios";
 
 // Base URL for the backend API
-const BASE_URL = 'http://localhost:8000/api/v1'; 
+const BASE_URL = "http://localhost:8000/api/v1";
 
 // Function to call the register API
 export const registerUser = async (userData) => {
   try {
     const response = await axios.post(`${BASE_URL}/users`, userData);
-    return response.data; 
+    return response.data;
   } catch (error) {
-    const errorMessage = error.response?.data?.message || 'An error occurred while registering.';
+    const errorMessage =
+      error.response?.data?.message || "An error occurred while registering.";
     throw new Error(errorMessage);
   }
 };
@@ -18,17 +99,18 @@ export const registerUser = async (userData) => {
 export const loginUser = async (credentials) => {
   try {
     const response = await axios.post(`${BASE_URL}/users/login`, credentials);
-    return response.data; 
+    return response.data;
   } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Invalid email or password.';
+    const errorMessage =
+      error.response?.data?.message || "Invalid email or password.";
     throw new Error(errorMessage);
   }
 };
 
 // Function to fetch notes
 export const fetchNotes = async () => {
-  const token = localStorage.getItem('token');
-  if (!token) throw new Error('User is not logged in.');
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("User is not logged in.");
 
   try {
     const response = await axios.get(`${BASE_URL}/notes`, {
@@ -38,15 +120,16 @@ export const fetchNotes = async () => {
     });
     return response.data;
   } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Error fetching notes.';
+    const errorMessage =
+      error.response?.data?.message || "Error fetching notes.";
     throw new Error(errorMessage);
   }
 };
 
 // Function to create a new note
 export const createNote = async (noteData) => {
-  const token = localStorage.getItem('token');
-  if (!token) throw new Error('User is not logged in.');
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("User is not logged in.");
 
   try {
     const response = await axios.post(`${BASE_URL}/notes`, noteData, {
@@ -56,11 +139,13 @@ export const createNote = async (noteData) => {
     });
     return response.data;
   } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Error creating note.';
+    const errorMessage =
+      error.response?.data?.message || "Error creating note.";
     throw new Error(errorMessage);
   }
 };
 
+// Function to archive a note
 export const archiveNote = async (id) => {
   const token = localStorage.getItem('token');
   if (!token) throw new Error('User is not logged in.');
@@ -78,3 +163,23 @@ export const archiveNote = async (id) => {
   }
 };
 
+export const trashNote = async (id) => {
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("User is not logged in.");
+
+  try {
+    const response = await axios.put(
+      `${BASE_URL}/notes/${id}/trash`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    const errorMessage = error.response?.data?.message || "Error trashing note.";
+    throw new Error(errorMessage);
+  }
+};
