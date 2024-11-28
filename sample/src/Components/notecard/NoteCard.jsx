@@ -22,12 +22,19 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate }) => {
   const [showPalette, setShowPalette] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [localNote, setLocalNote] = useState(note);
-
   const handleColorSelect = (color) => {
-    const updatedNote = { ...localNote, backgroundColor: color };
-    setLocalNote(updatedNote);
-    onUpdate(updatedNote);
-    setShowPalette(false);
+    // Update the local state to immediately reflect the change
+  const updatedNote = { ...localNote, color }; 
+  setLocalNote(updatedNote);
+
+  // Prepare backend payload with backgroundColor
+  const backendPayload = { ...updatedNote, backgroundColor: color };
+
+  // Send to backend
+  onUpdate(backendPayload);
+
+  // Close the palette
+  setShowPalette(false);
   };
 
   const handleNoteClick = (e) => {
@@ -45,7 +52,7 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate }) => {
     <>
       <div
         className={`note-card ${localNote.isTrash ? "note-card--trashed" : ""}`}
-        style={{ backgroundColor: localNote.color || "#FFFFFF" }}
+        style={{ backgroundColor: localNote.color }}
         onClick={handleNoteClick}
       >
         <div className="note-card__header">

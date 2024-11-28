@@ -57,6 +57,11 @@ const Header = ({ toggleDrawer }) => {
           <IconButton onClick={toggleDrawer}>
             <MenuIcon />
           </IconButton>
+          <img
+            src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
+            alt="Logo"
+            style={{ width: 30, height: 30, marginRight: 8 }} // Adjust size and margin if needed
+          />
           <Typography variant="h6" color="#5f6368" sx={{ fontWeight: "bold" }}>
             Fundoo-Notes
           </Typography>
