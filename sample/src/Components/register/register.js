@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import image1 from '../../assets/image.png';
 import { registerUser } from '../../utils/Api';
+// import { registerUser } from '../../../public/assets/image.png';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const Register = () => {
     }
 
     if (!passwordRegex.test(formData.password)) {
-      newErrors.password = 'Password must be at least 8 characters, including letters, numbers, and symbols.';
+      newErrors.password = 'Password must be at least 8 characters.';
     }
 
     if (formData.password !== formData.confirmPassword) {
@@ -90,7 +91,7 @@ const Register = () => {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}   
-              required
+              // required
               size="small"
               margin="dense"
               className="register-input"
@@ -101,7 +102,7 @@ const Register = () => {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              required
+              // required
               size="small"
               margin="dense"
               className="register-input"
@@ -116,7 +117,7 @@ const Register = () => {
               onChange={handleChange}
               error={!!errors.email}
               helperText={errors.email}
-              required
+              // required
               size="small"
               margin="dense"
               fullWidth
@@ -134,7 +135,7 @@ const Register = () => {
               onChange={handleChange}
               error={!!errors.password}
               helperText={errors.password}
-              required   
+              // required   
               size="small"
               margin="dense"
               className="register-input"
@@ -148,7 +149,7 @@ const Register = () => {
               onChange={handleChange}
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword}   
-              required   
+              // required   
               size="small"
               margin="dense"
               className="register-input"

@@ -1,3 +1,114 @@
+// .note-card {
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+//   padding: 16px;
+//   display: flex;
+//   flex-direction: column;
+//   width: auto;
+//   height: auto;
+//   min-width: 200px; // Ensures a minimum size for consistency
+//   max-width: 300px; // Adjust as needed to prevent overly large cards
+//   margin: 8px;
+//   transition: box-shadow 0.2s ease;
+//   flex-shrink: 0;
+//   position: relative;
+//   border: 1px solid #e0e0e0;
+
+//   &:hover {
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+//     .note-card__actions {
+//       opacity: 1;
+//       visibility: visible;
+//     }
+
+//     .note-card__header {
+//       opacity: 1;
+//       visibility: visible;
+//     }
+//   }
+
+//   &__header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 12px;
+//     opacity: 0;
+//     visibility: hidden;
+//     transition: opacity 0.2s ease, visibility 0.2s ease;
+//   }
+
+//   &__check,
+//   &__reminder {
+//     color: #5f6368;
+//     cursor: pointer;
+
+//     &:hover {
+//       color: #202124;
+//     }
+//   }
+
+//   &__title {
+//     font-size: 1rem;
+//     font-weight: 500;
+//     margin-bottom: 8px;
+//     color: #202124;
+//     word-wrap: break-word;
+//   }
+
+//   &__content {
+//     font-size: 0.875rem;
+//     color: #5f6368;
+//     margin-bottom: 16px;
+//     flex-grow: 1;
+//     word-wrap: break-word;
+//   }
+
+//   &__actions {
+//     display: flex;
+//     justify-content: space-between; // Ensures equal spacing between icons
+//     gap: 16px; // Adds space between buttons
+//     opacity: 0;
+//     visibility: hidden;
+//     transition: opacity 0.2s ease, visibility 0.2s ease;
+//   }
+
+//   &__action-btn {
+//     background-color: transparent;
+//     border: none;
+//     color: #5f6368;
+//     cursor: pointer;
+//     padding: 6px;
+//     border-radius: 50%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: background-color 0.2s ease;
+
+//     &:hover {
+//       background-color: rgba(95, 99, 104, 0.1);
+//       color: #202124;
+//     }
+
+//     &:disabled {
+//       color: #dadce0;
+//       cursor: not-allowed;
+
+//       &:hover {
+//         background-color: transparent;
+//       }
+//     }
+//   }
+// }
+
+// // Media query for smaller screens
+// @media (max-width: 768px) {
+//   .note-card {
+//     width: 100%;
+//   }
+// }
+
 .note-card {
   background-color: #fff;
   border-radius: 8px;
@@ -7,8 +118,8 @@
   flex-direction: column;
   width: auto;
   height: auto;
-  min-width: 200px; // Ensures a minimum size for consistency
-  max-width: 300px; // Adjust as needed to prevent overly large cards
+  min-width: 200px;
+  max-width: 300px;
   margin: 8px;
   transition: box-shadow 0.2s ease;
   flex-shrink: 0;
@@ -67,11 +178,12 @@
 
   &__actions {
     display: flex;
-    justify-content: space-between; // Ensures equal spacing between icons
-    gap: 16px; // Adds space between buttons
+    justify-content: space-between;
+    gap: 16px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease, visibility 0.2s ease;
+    position: relative;
   }
 
   &__action-btn {
@@ -102,9 +214,50 @@
   }
 }
 
-// Media query for smaller screens
+.color-palate-cnt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  z-index: 10;
+}
+
+.color-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 200px;
+  margin: 8px 0px;
+  cursor: pointer;
+}
+
+@for $i from 1 through 12 {
+  .col#{$i} {
+    @extend .color-btn;
+    background-color: nth($list: 
+      #FFFFFF #FAAFA8 #F39F76 #FFF8B8 #E2F6D3 #B4DDD3
+      #D4E4ED #AECCDC #D3BFDB #F6E2DD #E9E3D4 #EFEFF1, 
+      $n: $i
+    );
+    border: 1px solid nth($list: 
+      #e7e7bc #FAAFA8 #F39F76 #FFF8B8 #E2F6D3 #B4DDD3
+      #D4E4ED #AECCDC #D3BFDB #F6E2DD #E9E3D4 #EFEFF1, 
+      $n: $i
+    );
+  }
+}
+
 @media (max-width: 768px) {
   .note-card {
     width: 100%;
   }
 }
+

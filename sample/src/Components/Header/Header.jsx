@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -6,6 +6,8 @@ import {
   Typography,
   InputBase,
   Box,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -13,9 +15,29 @@ import ViewListIcon from "@mui/icons-material/ViewList";
 import SettingsIcon from "@mui/icons-material/Settings";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import SearchIcon from "@mui/icons-material/Search";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import { useNavigate } from "react-router-dom";
 import "./Header.scss";
 
 const Header = ({ toggleDrawer }) => {
+  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    // Perform logout logic (e.g., clearing tokens)
+    localStorage.removeItem("token"); // Example token removal
+    handleMenuClose();
+    navigate("/"); // Navigate to login page
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -30,6 +52,7 @@ const Header = ({ toggleDrawer }) => {
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        {/* Left Section */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <IconButton onClick={toggleDrawer}>
             <MenuIcon />
@@ -39,6 +62,7 @@ const Header = ({ toggleDrawer }) => {
           </Typography>
         </Box>
 
+        {/* Search Bar */}
         <Box
           sx={{
             display: "flex",
@@ -60,6 +84,7 @@ const Header = ({ toggleDrawer }) => {
           />
         </Box>
 
+        {/* Right Section */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <IconButton>
             <RefreshIcon />
@@ -73,6 +98,18 @@ const Header = ({ toggleDrawer }) => {
           <IconButton>
             <MoreHorizIcon />
           </IconButton>
+          {/* Profile Icon */}
+          <IconButton onClick={handleMenuOpen}>
+            <AccountCircle />
+          </IconButton>
+          {/* Menu */}
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          </Menu>
         </Box>
       </Toolbar>
     </AppBar>

@@ -95,7 +95,6 @@ const Login = () => {
             onChange={handleChange}
             error={!!errors.email}
             helperText={errors.email}
-            required
             fullWidth
             margin="normal"
             size="small"
@@ -109,7 +108,6 @@ const Login = () => {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
-            required
             fullWidth
             margin="normal"
             size="small"
