@@ -18,7 +18,7 @@ const NoteContainer = () => {
       const activeNotes = data.filter((note) => !note.isArchive && !note.isTrash);
       setNotes(activeNotes);
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to fetch notes");
+      setError(err.response?.data?.message );
     } finally {
       setIsLoading(false);
     }

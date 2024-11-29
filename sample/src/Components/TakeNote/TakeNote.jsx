@@ -144,4 +144,3 @@ const TakeNote = ({ onAddNote }) => {
 };
 
 export default TakeNote;
-
