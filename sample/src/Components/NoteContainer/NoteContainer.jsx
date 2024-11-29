@@ -74,7 +74,9 @@ const NoteContainer = () => {
 
   return (
     <div className="note-container">
-      <TakeNote onAddNote={handleAddNote} />
+      <div className="note-container__take-note-spacing">  {/* Added spacing wrapper */}
+        <TakeNote onAddNote={handleAddNote} />
+      </div>
       <div className="note-container__notes">
         {notes.length ? (
           notes.map((note) => (

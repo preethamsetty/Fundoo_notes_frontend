@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bell, Trash2, Palette, Archive, MoreVertical, Check } from "lucide-react";
+import { Bell, Trash2, Palette, Archive, MoreVertical, Check } from 'lucide-react';
 import EditNoteModal from "../EditNoteModal/EditNoteModal";
 import "./NoteCard.scss";
 
@@ -22,20 +22,21 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate }) => {
   const [showPalette, setShowPalette] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [localNote, setLocalNote] = useState(note);
+
   const handleColorSelect = (color) => {
-    // Update the local state to immediately reflect the change
-  const updatedNote = { ...localNote, color }; 
-  setLocalNote(updatedNote);
-
-  // Prepare backend payload with backgroundColor
-  const backendPayload = { ...updatedNote, backgroundColor: color };
-
-  // Send to backend
-  onUpdate(backendPayload);
-
-  // Close the palette
-  setShowPalette(false);
-  };
+        // Update the local state to immediately reflect the change
+      const updatedNote = { ...localNote, color }; 
+      setLocalNote(updatedNote);
+    
+      // Prepare backend payload with backgroundColor
+      const backendPayload = { ...updatedNote, backgroundColor: color };
+    
+      // Send to backend
+      onUpdate(backendPayload);
+    
+      // Close the palette
+      setShowPalette(false);
+      };
 
   const handleNoteClick = (e) => {
     if (!e.target.closest(".note-card__actions")) {
@@ -112,3 +113,4 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate }) => {
 };
 
 export default NoteCard;
+

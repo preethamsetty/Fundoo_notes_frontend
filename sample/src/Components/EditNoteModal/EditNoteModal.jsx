@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Bell, Users, Palette, ImageIcon, MoreVertical, Undo, Redo, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Bell, Users, Palette, ImageIcon, MoreVertical, Undo, Redo } from 'lucide-react';
 import './EditNoteModal.scss';
 
 const EditNoteModal = ({ note, onClose, onSave }) => {
   const [editedNote, setEditedNote] = useState({
     title: note.title,
     description: note.description,
-    backgroundColor: note.backgroundColor
+    color: note.color  // Change this from backgroundColor to color
   });
 
   const handleInputChange = (e) => {
@@ -22,12 +22,12 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
       ...note,
       title: editedNote.title,
       description: editedNote.description,
-      backgroundColor: editedNote.backgroundColor
+      color: editedNote.color  // Change this from backgroundColor to color
     });
   };
 
   // Auto-save when input changes
-  React.useEffect(() => {
+  useEffect(() => {
     const timeoutId = setTimeout(() => {
       handleSave();
     }, 500);
@@ -39,7 +39,7 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
     <div className="edit-note-overlay" onClick={onClose}>
       <div 
         className="edit-note-modal" 
-        style={{ backgroundColor: editedNote.backgroundColor || '#ffffff' }}
+        style={{ backgroundColor: editedNote.color || '#ffffff' }}  // Change this from backgroundColor to color
         onClick={e => e.stopPropagation()}
       >
         <div className="edit-note-modal__header">
@@ -92,7 +92,7 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
 
           <div className="edit-note-modal__meta">
             <span className="edit-note-modal__timestamp">
-              
+              {/* You can add a timestamp here if needed */}
             </span>
             <button 
               className="edit-note-modal__close"
