@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './login.css'; 
 import { TextField, Button, Link, Typography } from '@mui/material';
 import { loginUser } from '../../utils/Api';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const Login = () => {
   const navigate = useNavigate();
@@ -62,15 +64,20 @@ const Login = () => {
           password: formData.password,
         });
 
-        alert(response.message || 'Login successful!');
+        // Show success toast
+        toast.success(response.message || 'Login successful!',{position:'bottom-center'});
         
+
         if (response.token) {
           localStorage.setItem('token', response.token);
         }
 
-        navigate('/dashboard/notes');
+        // Navigate after a short delay to allow the toast to be visible
+        setTimeout(() => navigate('/dashboard/notes'), 2000);
       } catch (error) {
-        setApiError(error || 'Login failed. Please try again.');
+        setApiError(error.response?.data?.message || 'Login failed. Please try again.');
+        // Optional: Show error toast
+        toast.error('Login failed. Please try again.',{position:'bottom-center'});
       } finally {
         setIsLoading(false);
       }
@@ -138,6 +145,19 @@ const Login = () => {
           </Button>
         </div>
       </form>
+
+      {/* ToastContainer for displaying toast messages */}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+      />
     </div>
   );
 };

@@ -13,12 +13,34 @@ import {
 } from 'lucide-react';
 import { createNote } from '../../utils/Api';
 import './TakeNote.scss';
+import { useNavigate } from 'react-router-dom';
+
+const colorOptions = [
+  { name: "Default", color: "#FFFFFF" },
+  { name: "Coral", color: "#FAAFA8" },
+  { name: "Peach", color: "#F39F76" },
+  { name: "Sand", color: "#FFF8B8" },
+  { name: "Mint", color: "#E2F6D3" },
+  { name: "Sage", color: "#B4DDD3" },
+  { name: "Fog", color: "#D4E4ED" },
+  { name: "Storm", color: "#AECCDC" },
+  { name: "Dusk", color: "#D3BFDB" },
+  { name: "Blossom", color: "#F6E2DD" },
+  { name: "Clay", color: "#E9E3D4" },
+  { name: "Chalk", color: "#EFEFF1" },
+];
 
 const TakeNote = ({ onAddNote }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [note, setNote] = useState({ title: '', description: '' });
+  const [note, setNote] = useState({
+    title: '',
+    description: '',
+    color: '#FFFFFF',
+    isArchive: false,
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showPalette, setShowPalette] = useState(false);
 
   const noteRef = useRef(null);
 
@@ -47,7 +69,7 @@ const TakeNote = ({ onAddNote }) => {
       try {
         const createdNote = await createNote(note);
         onAddNote(createdNote.data);
-        setNote({ title: '', description: '' });
+        setNote({ title: '', description: '', color: '#FFFFFF', isArchive: false });
       } catch (err) {
         setError(err.message);
       } finally {
@@ -55,6 +77,7 @@ const TakeNote = ({ onAddNote }) => {
       }
     }
     setIsExpanded(false);
+    setShowPalette(false);
   };
 
   const handleCloseClick = (e) => {
@@ -62,8 +85,49 @@ const TakeNote = ({ onAddNote }) => {
     handleClose();
   };
 
+  const handleColorSelect = (color) => {
+    setNote((prevNote) => ({ ...prevNote, color }));
+    setShowPalette(false);
+  };
+
+  const handleArchive = async () => {
+    try {
+      const updatedNote = { ...note, isArchive: true };
+      const createdNote = await createNote(updatedNote); // Send archive state to the backend
+      onAddNote(createdNote.data);
+      setNote({ title: '', description: '', color: '#FFFFFF', isArchive: false }); // Reset state
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsExpanded(false);
+    }
+  };
+
+  // const handleArchive = async () => {
+  //   try {
+  //     const updatedNote = { ...note, isArchive: true };
+  //     await createNote(updatedNote); // Send the updated note with archive state to the backend
+  
+  //     // Fetch the updated list of notes
+  //     const updatedNotes = await fetchNotes();
+  
+  //     // Update the parent component's notes container with the refreshed notes
+  //     onAddNote(updatedNotes);
+  
+  //     // Reset the local note state
+  //     setNote({ title: '', description: '', color: '#FFFFFF', isArchive: false });
+  //   } catch (err) {
+  //     // Handle errors and display appropriate messages
+  //     setError(err.message);
+  //   } finally {
+  //     // Collapse the input area
+  //     setIsExpanded(false);
+  //   }
+  // };
+  
+
   return (
-    <div className="take-note" ref={noteRef}>
+    <div className="take-note" ref={noteRef} style={{ backgroundColor: note.color }}>
       {!isExpanded ? (
         <div
           className="take-note__collapsed"
@@ -109,13 +173,19 @@ const TakeNote = ({ onAddNote }) => {
               <button className="take-note__tool-btn">
                 <Users size={18} />
               </button>
-              <button className="take-note__tool-btn">
+              <button
+                className="take-note__tool-btn"
+                onClick={() => setShowPalette(!showPalette)}
+              >
                 <Palette size={18} />
               </button>
               <button className="take-note__tool-btn">
                 <ImageIcon size={18} />
               </button>
-              <button className="take-note__tool-btn">
+              <button
+                className="take-note__tool-btn"
+                onClick={handleArchive}
+              >
                 <Archive size={18} />
               </button>
               <button className="take-note__tool-btn">
@@ -128,14 +198,27 @@ const TakeNote = ({ onAddNote }) => {
                 <Redo size={18} />
               </button>
             </div>
-            <button 
-              className="take-note__close-btn" 
+            <button
+              className="take-note__close-btn"
               onClick={handleCloseClick}
               disabled={isLoading}
             >
               {isLoading ? 'Saving...' : 'Close'}
             </button>
           </div>
+          {showPalette && (
+            <div className="color-palette">
+              {colorOptions.map((option) => (
+                <div
+                  key={option.color}
+                  className="color-option"
+                  style={{ backgroundColor: option.color }}
+                  onClick={() => handleColorSelect(option.color)}
+                  title={option.name}
+                ></div>
+              ))}
+            </div>
+          )}
           {error && <div className="take-note__error">{error}</div>}
         </div>
       )}

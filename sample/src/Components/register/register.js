@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import image1 from '../../assets/image.png';
 import { registerUser } from '../../utils/Api';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ const Register = () => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-  const nameRegex = /^[A-Za-z]+$/;  // Regex to allow only alphabets for first and last name
+  const nameRegex = /^[A-Za-z]+$/; 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,7 +76,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
       try {
         const response = await registerUser({
@@ -83,16 +85,23 @@ const Register = () => {
           email: formData.email,
           password: formData.password,
         });
-        alert(response.message || 'Registration successful!');
-        navigate('/');
+  
+        toast.success(response.message || 'Registration successful!', {
+          position:'bottom-center', 
+        });
+  
+        setTimeout(() => navigate('/'), 3000);
       } catch (error) {
-        alert(error || 'Registration failed. Please try again.');
+        toast.error(error.response?.data?.message || 'Registration failed. Please try again.', {
+          position: 'bottom-center',
+        });
       }
     }
-  };
+  };  
 
   return (
     <div className="RegisterPage">
+      <ToastContainer /> {/* Toast container to display notifications */}
       <div className="RegisterContainer">
         <h1>Fundo</h1>
         <h2>Create your Fundo Account</h2>
@@ -135,7 +144,6 @@ const Register = () => {
               className="register-input"
             />
           </div>
-          {/* <p>You can use letters, numbers, and periods</p> */}
           <div className="RegisterPassword">
             <TextField
               label="Password"
@@ -183,3 +191,4 @@ const Register = () => {
 };
 
 export default Register;
+

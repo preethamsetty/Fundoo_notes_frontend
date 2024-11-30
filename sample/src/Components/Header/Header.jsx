@@ -38,6 +38,11 @@ const Header = ({ toggleDrawer }) => {
     navigate("/"); // Navigate to login page
   };
 
+  // Function to reload the page
+  const handlePageRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -91,7 +96,7 @@ const Header = ({ toggleDrawer }) => {
 
         {/* Right Section */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <IconButton>
+          <IconButton onClick={handlePageRefresh}>
             <RefreshIcon />
           </IconButton>
           <IconButton>
