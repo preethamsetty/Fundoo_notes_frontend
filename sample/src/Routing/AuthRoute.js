@@ -6,5 +6,5 @@ export const AuthRoute = ({children}) =>{
         return children
     }
 
-    return <Navigate to= "/dashboard"/>
+    return <Navigate to= "/dashboard/notes"/>
 }

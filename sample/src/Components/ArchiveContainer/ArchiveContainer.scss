@@ -7,9 +7,9 @@
 
   .archive-container__notes {
     display: flex;
-    flex-wrap: wrap; // Allow wrapping to the next row
-    gap: 20px; // Add spacing between notes
-    justify-content: flex-start; // Align items to the center
-    padding-bottom: 20px; // Add some padding to the bottom
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: flex-start; 
+    padding-bottom: 20px; 
   }
 }
