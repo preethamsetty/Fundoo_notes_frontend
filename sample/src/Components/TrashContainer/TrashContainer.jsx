@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TrashedNoteCard from "../TrashedNoteCard/TrashedNoteCard";
+import NoteCard from "../notecard/NoteCard";
 import { fetchNotes, trashNote, deleteNotePermanently } from "../../utils/Api";
 import "./TrashContainer.scss";
 
@@ -26,7 +26,7 @@ const TrashContainer = () => {
 
   const handleRestoreNote = async (id) => {
     try {
-      await trashNote(id); // This will toggle the trash status
+      await trashNote(id);
       setTrashedNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
     } catch (err) {
       console.error("Error restoring note:", err.message);
@@ -50,9 +50,10 @@ const TrashContainer = () => {
       <h3>Trashed Notes</h3>
       <div className="trash-container__notes">
         {trashedNotes.map((note) => (
-          <TrashedNoteCard
+          <NoteCard
             key={note._id}
             note={note}
+            isTrash={true}
             onRestore={handleRestoreNote}
             onDeleteForever={handleDeleteForever}
           />
@@ -63,4 +64,3 @@ const TrashContainer = () => {
 };
 
 export default TrashContainer;
-

@@ -28,7 +28,7 @@ const ArchiveContainer = () => {
 
   const handleUnarchiveNote = async (id) => {
     try {
-      await archiveNote(id); // Toggle the archive status
+      await archiveNote(id); 
       setArchivedNotes((prevNotes) =>
         prevNotes.filter((note) => note._id !== id)
       );
@@ -39,7 +39,7 @@ const ArchiveContainer = () => {
 
   const handleTrashNote = async (id) => {
     try {
-      await trashNote(id); // Toggle the trash status
+      await trashNote(id); 
       setArchivedNotes((prevNotes) =>
         prevNotes.filter((note) => note._id !== id)
       );

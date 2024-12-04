@@ -1,15 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  Check,
-  Pencil,
-  ImageIcon,
-  Bell,
-  Users,
-  Palette,
-  MoreVertical,
-  Undo,
-  Redo,
-  Archive,
+import {Check,Pencil,ImageIcon,Bell,Users,Palette,MoreVertical,Undo,Redo,Archive,
 } from 'lucide-react';
 import { createNote } from '../../utils/Api';
 import './TakeNote.scss';
@@ -102,29 +92,6 @@ const TakeNote = ({ onAddNote }) => {
       setIsExpanded(false);
     }
   };
-
-  // const handleArchive = async () => {
-  //   try {
-  //     const updatedNote = { ...note, isArchive: true };
-  //     await createNote(updatedNote); // Send the updated note with archive state to the backend
-  
-  //     // Fetch the updated list of notes
-  //     const updatedNotes = await fetchNotes();
-  
-  //     // Update the parent component's notes container with the refreshed notes
-  //     onAddNote(updatedNotes);
-  
-  //     // Reset the local note state
-  //     setNote({ title: '', description: '', color: '#FFFFFF', isArchive: false });
-  //   } catch (err) {
-  //     // Handle errors and display appropriate messages
-  //     setError(err.message);
-  //   } finally {
-  //     // Collapse the input area
-  //     setIsExpanded(false);
-  //   }
-  // };
-  
 
   return (
     <div className="take-note" ref={noteRef} style={{ backgroundColor: note.color }}>
