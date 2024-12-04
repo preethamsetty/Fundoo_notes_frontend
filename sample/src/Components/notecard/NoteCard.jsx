@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bell, Trash2, Palette, Archive, MoreVertical, Check, RefreshCw } from "lucide-react";
+import { Bell, Trash2, Palette, Archive, MoreVertical, Check, RefreshCw } from 'lucide-react';
 import EditNoteModal from "../EditNoteModal/EditNoteModal";
 import "./NoteCard.scss";
 
@@ -32,7 +32,7 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate, onRestore, onDeleteForev
   };
 
   const handleNoteClick = (e) => {
-    if (!e.target.closest(".note-card__actions")) {
+    if (!isTrash && !e.target.closest(".note-card__actions")) {
       setShowEditModal(true);
     }
   };
@@ -101,21 +101,21 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate, onRestore, onDeleteForev
               </button>
             </>
           )}
-          {showPalette && (
-            <div className="color-palate-cnt">
-              {colorOptions.map((option, index) => (
-                <div
-                  key={option.color}
-                  className={`col${index + 1}`}
-                  title={option.name}
-                  onClick={() => handleColorSelect(option.color)}
-                ></div>
-              ))}
-            </div>
-          )}
         </div>
+        {showPalette && !isTrash && (
+          <div className="color-palate-cnt">
+            {colorOptions.map((option, index) => (
+              <div
+                key={option.color}
+                className={`col${index + 1}`}
+                title={option.name}
+                onClick={() => handleColorSelect(option.color)}
+              ></div>
+            ))}
+          </div>
+        )}
       </div>
-      {showEditModal && (
+      {showEditModal && !isTrash && (
         <EditNoteModal
           note={localNote}
           onClose={() => setShowEditModal(false)}
