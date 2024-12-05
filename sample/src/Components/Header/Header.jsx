@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {AppBar,Toolbar,IconButton,Typography,InputBase,Box,Menu,MenuItem} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -9,10 +9,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
 import "./Header.scss";
+import { UpdateQueryContext } from "../Hooks/SearchHook";
 
 const Header = ({ toggleDrawer }) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const updateQuery=useContext(UpdateQueryContext)
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -78,6 +81,8 @@ const Header = ({ toggleDrawer }) => {
           <SearchIcon />
           <InputBase
             placeholder="Search"
+            onChange={(e)=>{updateQuery(e.currentTarget.value) 
+              console.log(e.currentTarget.value)}}
             fullWidth
             sx={{ paddingLeft: 1, fontSize: "0.9rem", height: "50px" }}
           />
