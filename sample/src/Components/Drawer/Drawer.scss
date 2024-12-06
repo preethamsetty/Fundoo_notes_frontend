@@ -2,76 +2,62 @@
   position: fixed;
   top: 64px;
   left: 0;
+  height: calc(100vh - 64px);
   background-color: #f8f9fa;
   overflow-x: hidden;
   transition: width 0.3s ease;
+  width: 90px;
+  z-index: 1000;
 
   &.open {
     width: 250px;
-
-    .drawer-content {
-      padding: 16px;
-
-      .MuiListItem-root {
-        &:hover {
-          background-color: #fff5e1;
-        }
-
-        &.active {
-          background-color: #ffe6b3;
-
-          .MuiListItemIcon-root {
-            background-color: #ffe6b3;
-            border-radius: 50%;
-          }
-        }
-      }
-
-      .MuiListItemIcon-root {
-        margin-right: 16px; // Space between icon and text
-        min-width: 40px;
-      }
-    }
   }
 
-  &:not(.open) {
-    width: 90px;
+  .drawer-content {
+    width: 250px;
+    padding: 16px 8px;
 
-    .drawer-content {
-      padding: 1px;
+    .MuiListItem-root {
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      border-radius: 0 25px 25px 0;
 
-      .MuiListItem-root {
+      &:hover {
+        background-color: #fff5e1;
+      }
+
+      &.active {
+        background-color: #ffe6b3;
+
+        .MuiListItemIcon-root {
+          color: #000;
+        }
+      }
+
+      .icon-container {
+        min-width: 56px;
         display: flex;
-        justify-content: center; // Center icons horizontally
-        align-items: center;    // Center icons vertically
-        flex-direction: column; // Arrange icons in a column
-
-        &:hover {
-          background-color: #fff5e1;
-        }
-
-        &.active {
-          background-color: #ffe6b3;
-
-          .MuiListItemIcon-root {
-            background-color: #ffe6b3;
-            border-radius: 50%;
-          }
-        }
+        justify-content: center;
       }
 
-      .MuiListItemIcon-root {
-        margin-bottom: 6px; // Add space between icons
-        margin-top: 6px;    // Top space for consistent spacing
+      .label-text {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
-}
 
-// MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root{
-//   viewBox:"0 0 24 24"
-// }
-
-#drawerIcon {
-  margin-right: 0 !important; /* Or use a more specific selector */
+  &.open {
+    .drawer-content {
+      .MuiListItem-root {
+        .label-text {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }

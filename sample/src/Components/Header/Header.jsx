@@ -1,5 +1,14 @@
 import React, { useState, useContext } from "react";
-import {AppBar,Toolbar,IconButton,Typography,InputBase,Box,Menu,MenuItem} from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Box,
+  Menu,
+  MenuItem
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import ViewListIcon from "@mui/icons-material/ViewList";
@@ -15,7 +24,7 @@ const Header = ({ toggleDrawer }) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const updateQuery=useContext(UpdateQueryContext)
+  const updateQuery = useContext(UpdateQueryContext);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,9 +35,9 @@ const Header = ({ toggleDrawer }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); 
+    localStorage.removeItem("token");
     handleMenuClose();
-    navigate("/"); 
+    navigate("/");
   };
 
   const handlePageRefresh = () => {
@@ -57,7 +66,7 @@ const Header = ({ toggleDrawer }) => {
           <img
             src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
             alt="Logo"
-            style={{ width: 30, height: 30, marginRight: 8 }} 
+            style={{ width: 30, height: 30, marginRight: 8 }}
           />
           <Typography variant="h6" color="#5f6368" sx={{ fontWeight: "bold" }}>
             Fundoo-Notes
@@ -81,8 +90,10 @@ const Header = ({ toggleDrawer }) => {
           <SearchIcon />
           <InputBase
             placeholder="Search"
-            onChange={(e)=>{updateQuery(e.currentTarget.value) 
-              console.log(e.currentTarget.value)}}
+            onChange={(e) => {
+              updateQuery(e.currentTarget.value);
+              console.log(e.currentTarget.value);
+            }}
             fullWidth
             sx={{ paddingLeft: 1, fontSize: "0.9rem", height: "50px" }}
           />
@@ -121,3 +132,4 @@ const Header = ({ toggleDrawer }) => {
 };
 
 export default Header;
+
