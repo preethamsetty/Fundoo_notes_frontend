@@ -14,31 +14,49 @@
   }
 
   .drawer-content {
-    width: 250px;
-    padding: 16px 8px;
+    width: 240px;
+    padding: 2px -2px;
 
     .MuiListItem-root {
-      padding: 8px 12px;
+      padding: 10px 10px;
       display: flex;
       align-items: center;
-      border-radius: 0 25px 25px 0;
 
+      /* Hover effect when drawer is closed */
       &:hover {
-        background-color: #fff5e1;
+        background-color: transparent; /* Prevent hover background in closed state */
       }
 
       &.active {
-        background-color: #ffe6b3;
+        /* Active item in closed state */
+        background-color: transparent;
+
+        .icon-container {
+          background-color: #ffe6b3;
+          border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
+          margin: 0 auto;
+        }
 
         .MuiListItemIcon-root {
           color: #000;
         }
+
+        .label-text {
+          opacity: 0; /* Hide text when closed */
+        }
       }
 
       .icon-container {
-        min-width: 56px;
+        min-width: 48px;
         display: flex;
         justify-content: center;
+        margin-left: 0px;
       }
 
       .label-text {
@@ -54,8 +72,29 @@
   &.open {
     .drawer-content {
       .MuiListItem-root {
+        border-radius: 5px; /* Full pill shape in open state */
+
+        /* Restore hover effect in open state */
+        &:hover {
+          background-color: #fff5e1;
+        }
+
+        &.active {
+          background-color: #ffe6b3;
+
+          .icon-container {
+            background-color: transparent;
+            border-radius: 25px; /* Match open drawer style */
+            box-shadow: none;
+          }
+
+          .label-text {
+            opacity: 1; /* Show text in open state */
+          }
+        }
+
         .label-text {
-          opacity: 1;
+          opacity: 1; /* Show text in open state */
         }
       }
     }

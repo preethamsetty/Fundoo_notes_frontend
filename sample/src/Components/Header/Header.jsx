@@ -60,7 +60,7 @@ const Header = ({ toggleDrawer }) => {
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         {/* Left Section */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <IconButton onClick={toggleDrawer}>
+          <IconButton onClick={toggleDrawer} sx={{ marginLeft: "6px" }}>
             <MenuIcon />
           </IconButton>
           <img
