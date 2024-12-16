@@ -32,7 +32,7 @@ const NoteCard = ({ note, onArchive, onTrash, onUpdate, onRestore, onDeleteForev
   };
 
   const handleNoteClick = (e) => {
-    if (!isTrash && !e.target.closest(".note-card__actions")) {
+    if (!isTrash && !e.target.closest(".note-card__actions") && !e.target.closest(".color-palate-cnt")) {
       setShowEditModal(true);
     }
   };

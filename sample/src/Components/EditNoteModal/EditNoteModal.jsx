@@ -2,19 +2,56 @@ import React, { useState, useEffect } from 'react';
 import { Bell, Users, Palette, ImageIcon, MoreVertical, Undo, Redo } from 'lucide-react';
 import './EditNoteModal.scss';
 
+const colorOptions = [
+  { name: "Default", color: "#FFFFFF" },
+  { name: "Coral", color: "#FAAFA8" },
+  { name: "Peach", color: "#F39F76" },
+  { name: "Sand", color: "#FFF8B8" },
+  { name: "Mint", color: "#E2F6D3" },
+  { name: "Sage", color: "#B4DDD3" },
+  { name: "Fog", color: "#D4E4ED" },
+  { name: "Storm", color: "#AECCDC" },
+  { name: "Dusk", color: "#D3BFDB" },
+  { name: "Blossom", color: "#F6E2DD" },
+  { name: "Clay", color: "#E9E3D4" },
+  { name: "Chalk", color: "#EFEFF1" },
+];
+
 const EditNoteModal = ({ note, onClose, onSave }) => {
   const [editedNote, setEditedNote] = useState({
     title: note.title,
     description: note.description,
-    color: note.color  
+    color: note.color,
   });
+  const [showPalette, setShowPalette] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditedNote(prev => ({
+    setEditedNote((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
+  };
+
+  const handleColorSelect = (color) => { 
+    const updatedNote = {
+      ...editedNote,
+      color,
+    };
+
+    // Update the local state with the new color
+    setEditedNote(updatedNote);
+
+    // Save changes to the backend
+    onSave({
+      ...note,
+      title: updatedNote.title,
+      description: updatedNote.description,
+      color,
+    });
+
+    // Close the color palette
+    setShowPalette(false);
   };
 
   const handleSave = () => {
@@ -22,7 +59,7 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
       ...note,
       title: editedNote.title,
       description: editedNote.description,
-      color: editedNote.color  // Change this from backgroundColor to color
+      color: editedNote.color,
     });
   };
 
@@ -37,10 +74,10 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
 
   return (
     <div className="edit-note-overlay" onClick={onClose}>
-      <div 
-        className="edit-note-modal" 
+      <div
+        className="edit-note-modal"
         style={{ backgroundColor: editedNote.color || '#ffffff' }}
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="edit-note-modal__header">
           <input
@@ -64,14 +101,36 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
 
         <div className="edit-note-modal__footer">
           <div className="edit-note-modal__actions">
-            <button className="edit-note-modal__action-btn">
-              <Bell size={18} />
-            </button>
+            <div className="edit-note-modal__color-picker">
+              <button
+                className="edit-note-modal__action-btn"
+                onClick={() => setShowPalette(!showPalette)}
+              >
+                <Palette size={18} />
+              </button>
+              {showPalette && (
+                <div className="color-palate">
+                  {colorOptions.map((option) => (
+                    <div
+                      key={option.color}
+                      className="color-palate__color"
+                      title={option.name}
+                      style={{
+                        backgroundColor: option.color,
+                        width: '24px',
+                        height: '24px',
+                        borderRadius: '50%',
+                        cursor: 'pointer',
+                        margin: '4px',
+                      }}
+                      onClick={() => handleColorSelect(option.color)}
+                    ></div>
+                  ))}
+                </div>
+              )}
+            </div>
             <button className="edit-note-modal__action-btn">
               <Users size={18} />
-            </button>
-            <button className="edit-note-modal__action-btn">
-              <Palette size={18} />
             </button>
             <button className="edit-note-modal__action-btn">
               <ImageIcon size={18} />
@@ -91,10 +150,7 @@ const EditNoteModal = ({ note, onClose, onSave }) => {
           </div>
 
           <div className="edit-note-modal__meta">
-            <button 
-              className="edit-note-modal__close"
-              onClick={onClose}
-            >
+            <button className="edit-note-modal__close" onClick={onClose}>
               Close
             </button>
           </div>
